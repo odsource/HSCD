@@ -1,0 +1,13 @@
+#net clk50 period = 50 MHz ;
+
+NET "rst"       LOC = "L14" | IOSTANDARD = LVCMOS33;   # user reset button
+NET "clk"       LOC = "T9"  | IOSTANDARD = LVCMOS33;   # GCK0, master clock 50 MHz, fix wired!
+NET "led0"      LOC = "K12" | IOSTANDARD = LVCMOS33;   # led 0
+NET "led1"      LOC = "P14" | IOSTANDARD = LVCMOS33;   # led 1
+NET "btn0"      LOC = "M13" | IOSTANDARD = LVCMOS33;   # button 0
+NET "evn1"      LOC = "C16" | IOSTANDARD = LVCMOS33;   # event 1
+NET "evn2"      LOC = "D16" | IOSTANDARD = LVCMOS33;   # event 2
+
+# UART Connections
+NET "txd"       LOC = "R13" | IOSTANDARD = LVCMOS33;   # transmitter
+NET "rxd"       LOC = "T13" | IOSTANDARD = LVCMOS33;   # receiver

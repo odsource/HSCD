@@ -1,0 +1,8 @@
+*.html
+Uebung/Aufgabe1/xwork/
+*.dat
+*.dec
+*.fmt
+*.hex
+*.m
+*.mem

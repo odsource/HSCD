@@ -1,0 +1,83 @@
+
+        CONSTANT IO_Port,  00
+        CONSTANT LED0,     01
+        CONSTANT LED1,     02
+        CONSTANT BNT0,     04
+        
+        CONSTANT COM_Port, 01
+        CONSTANT TXD,      01
+        CONSTANT RXD,      01
+
+; Register Mapping
+; alle acht Register s0 bis sF stehen der ISR zur Verfuegung
+        NAMEREG s0, IOR
+        NAMEREG s1, TMP
+        NAMEREG s2, CNTH
+        NAMEREG s3, CNTL
+
+; --------------------------------------------------------------------------------------------
+
+        ADDRESS 000
+; Hauptfunktion
+start:  AND    CNTH, 00   ; Initialisierung der Zaehlers ...
+        AND    CNTL, 00   ; in der ISR
+        ENABLE INTERRUPT
+loop:   ; do nothing
+        JUMP loop
+
+; --------------------------------------------------------------------------------------------
+ 
+; Subroutine, die den Zustand des Buttons BTN0 auf die Leuchtdiode LED0 durchschaltet
+BNT0LED0:
+        INPUT  IOR,  IO_Port ; IO-Port einlesen
+        INPUT  TMP,  IO_Port ; IO-Port einlesen
+        AND    TMP,  BNT0    ; Zustand von BNT0 ermitteln
+        SR0    TMP           ; auf die Position ...
+        SR0    TMP           ; ... von LED0 verschieben
+        AND    IOR,  LED1    ; Zustand von LED1 ermitteln
+        OR     IOR,  TMP     ; LED1 mit BNT0 konkatinieren
+        OUTPUT IOR,  IO_Port ; den neuen Wert ueber IO-Port ausgeben 
+        RETURN
+
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die die Leuchtdione LED1 mit ca. 1 Hz blinken laesst
+BLINK:  ADD    CNTL, 01      ; den 16-Bit-Zaehler ... 
+        ADDCY  CNTH, 00      ; .. inkrementieren
+        JUMP   NC,   BLINK0  ; kein Ueberlauf -> exit, sonst
+        INPUT  IOR,  IO_Port ; IO-Port einlesen
+        XOR    IOR,  LED1    ; LED1 toggeln
+        OUTPUT IOR,  IO_Port ; den neuen Wert ueber IO-Port ausgeben 
+BLINK0: RETURN
+
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die Daten ueber das serielle Eingangssignal RXD abtastet,
+; zu einem Byte zusammensetzt, entschidet, ob das empfangene Byte
+; ein Buchstabe oder eine Ziffer ist, und ggf. das Byte seriell
+; ueber das serielle Ausgangssignal TXD ausgibt
+;
+; in dieser Version ist eine einfache Echo-Funktion implementiert
+COMM:   
+        INPUT  IOR,  COM_Port ; COM-Port einlesen
+;       AND    IOR,  RXD      ; Zustand von RXD ermitteln
+		OUTPUT IOR,  COM_Port ; TXD ausgeben
+        RETURN
+		; idle, fallende flanke, start bit erkannt wenn nicht abbrechen, daten, stoppbit 
+		; mod 16 für daten
+		; mod 8 für immer
+
+; --------------------------------------------------------------------------------------------
+        
+        ADDRESS 300
+; Interrupt-Service-Routine
+ISR:    CALL    BNT0LED0
+        CALL    BLINK
+        CALL    COMM
+        RETURNI ENABLE
+
+; --------------------------------------------------------------------------------------------
+
+; Interrupt-Vektor
+        ADDRESS 3FF
+        JUMP ISR

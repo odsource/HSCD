@@ -1,0 +1,17 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Tue Nov 06 09:34:52 2018
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "txd" LOCATE = SITE "R13" LEVEL 1;
+NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+COMP "led0" LOCATE = SITE "K12" LEVEL 1;
+COMP "btn0" LOCATE = SITE "M13" LEVEL 1;
+COMP "led1" LOCATE = SITE "P14" LEVEL 1;
+COMP "clk" LOCATE = SITE "T9" LEVEL 1;
+COMP "evn1" LOCATE = SITE "C16" LEVEL 1;
+COMP "evn2" LOCATE = SITE "D16" LEVEL 1;
+COMP "rxd" LOCATE = SITE "T13" LEVEL 1;
+COMP "rst" LOCATE = SITE "L14" LEVEL 1;
+SCHEMATIC END;
+
