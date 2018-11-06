@@ -14,6 +14,8 @@
         NAMEREG s1, TMP
         NAMEREG s2, CNTH
         NAMEREG s3, CNTL
+		NAMEREG s4, CNTZERO
+		NAMEREG s5, STATE
 
 ; --------------------------------------------------------------------------------------------
 
@@ -21,6 +23,7 @@
 ; Hauptfunktion
 start:  AND    CNTH, 00   ; Initialisierung der Zaehlers ...
         AND    CNTL, 00   ; in der ISR
+		AND	   STATE, 00
         ENABLE INTERRUPT
 loop:   ; do nothing
         JUMP loop
@@ -59,14 +62,63 @@ BLINK0: RETURN
 ;
 ; in dieser Version ist eine einfache Echo-Funktion implementiert
 COMM:   
-        INPUT  IOR,  COM_Port ; COM-Port einlesen
-;       AND    IOR,  RXD      ; Zustand von RXD ermitteln
-		OUTPUT IOR,  COM_Port ; TXD ausgeben
+        INPUT  	IOR,  COM_Port ; COM-Port einlesen
+;       AND    	IOR,  RXD      ; Zustand von RXD ermitteln
+
+
+		COMPARE IOR, 00
+		JUMP   	Z, FALLINGFLANK
+		
+		COMPARE STATE, 01
+		JUMP 	Z, STARTBIT
+		
+		COMPARE STATE, 02
+		JUMP 	Z, DATA
+		
+		COMPARE STATE, 03
+		JUMP 	Z, STOPPBIT
+		
+		
+		OUTPUT 	IOR,  COM_Port ; TXD ausgeben
         RETURN
 		; idle, fallende flanke, start bit erkannt wenn nicht abbrechen, daten, stoppbit 
 		; mod 16 für daten
 		; mod 8 für immer
 
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die überprüft ob die fallende Flanke nur eine Leitungsstörung
+; war, oder ob es sich wirklich um das Startbit handelt.
+; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
+FALLINGFLANK:
+		
+		COMPARE CNTZERO, 08
+		JUMP NZ, FALLINGFLANK
+		COMPARE IOR, 00
+		
+		RETURN
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die 
+STARTBIT:
+
+		RETURN
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, 
+DATA:
+
+		RETURN
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, 
+STOPPBIT:
+
+		RETURN
+		
 ; --------------------------------------------------------------------------------------------
         
         ADDRESS 300
