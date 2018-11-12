@@ -1,0 +1,12 @@
+Table of addresses and their specified labels.
+
+000  start
+005  loop
+006  BNT0LED0
+00F  BLINK
+015  BLINK0
+016  COMM
+023  FALLINGFLANK
+029  START
+031  STOPPBIT
+300  ISR

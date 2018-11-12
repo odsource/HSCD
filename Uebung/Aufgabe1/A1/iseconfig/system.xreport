@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-11-06T09:33:42</DateModified>
+  <DateModified>2018-11-11T22:16:13</DateModified>
   <ModuleName>system</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/A1/iseconfig/system.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/xwork/A1\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/user/HSCD/Uebung/Aufgabe1/A1/iseconfig/system.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/user/HSCD/Uebung/Aufgabe1/xwork/A1\</ImplementationReportsDirectory>
   <DateInitialized>2018-11-06T09:28:20</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

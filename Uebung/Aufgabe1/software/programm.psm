@@ -7,6 +7,13 @@
         CONSTANT COM_Port, 01
         CONSTANT TXD,      01
         CONSTANT RXD,      01
+		
+		CONSTANT MIN_NUM   30
+		CONSTANT MAX_NUM   3A
+		CONSTANT MIN_BA	   41
+		CONSTANT MAX_BA	   5B
+		CONSTANT MIN_SA	   61
+		CONSTANT MAX_SA	   7B
 
 ; Register Mapping
 ; alle acht Register s0 bis sF stehen der ISR zur Verfuegung
@@ -14,16 +21,27 @@
         NAMEREG s1, TMP
         NAMEREG s2, CNTH
         NAMEREG s3, CNTL
-		NAMEREG s4, CNTZERO
-		NAMEREG s5, STATE
+		NAMEREG s4, MOD8
+		NAMEREG s5, MOD16
+		NAMEREG s6, IN_STATE
+		NAMEREG s7, OUT_STATE
+		NAMEREG s8, DATA_BUFFER
+		NAMEREG s9, WRITE_BUFFER
+		NAMEREG sA,	MOD16_W
+		NAMEREG sB,	MOD8_W
 
 ; --------------------------------------------------------------------------------------------
 
         ADDRESS 000
 ; Hauptfunktion
-start:  AND    CNTH, 00   ; Initialisierung der Zaehlers ...
-        AND    CNTL, 00   ; in der ISR
-		AND	   STATE, 00
+start:  AND    CNTH, 00   	; Initialisierung der Zaehlers ...
+        AND    CNTL, 00   	; in der ISR
+		AND	   IN_STATE,  00
+		AND	   OUT_STATE, 00
+		LOAD   MOD8, 08		; Initialisierung des modulo 8 Zaehlers
+		LOAD   MOD16, 0F	; Initialisierung des modulo 8 Zaehlers
+		LOAD   MOD16_W, 0F
+		LOAD	MOD8_W,	08
         ENABLE INTERRUPT
 loop:   ; do nothing
         JUMP loop
@@ -56,28 +74,36 @@ BLINK0: RETURN
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die Daten ueber das serielle Eingangssignal RXD abtastet,
-; zu einem Byte zusammensetzt, entschidet, ob das empfangene Byte
+; zu einem Byte zusammensetzt, entscheidet, ob das empfangene Byte
 ; ein Buchstabe oder eine Ziffer ist, und ggf. das Byte seriell
 ; ueber das serielle Ausgangssignal TXD ausgibt
 ;
 ; in dieser Version ist eine einfache Echo-Funktion implementiert
-COMM:   
-        INPUT  	IOR,  COM_Port ; COM-Port einlesen
-;       AND    	IOR,  RXD      ; Zustand von RXD ermitteln
+COMM_IN:   
+        INPUT  	IOR,  	COM_Port ; COM-Port einlesen
+;       AND    	IOR,  	RXD      ; Zustand von RXD ermitteln
 
+		
+		COMPARE IN_STATE, 	00
+		JUMP	Z,			FALLINGFLANK
 
-		COMPARE IOR, 00
-		JUMP   	Z, FALLINGFLANK
+		COMPARE	IN_STATE,	01
+		JUMP   	Z, 			STARTBIT
 		
-		COMPARE STATE, 01
-		JUMP 	Z, STARTBIT
+		COMPARE IN_STATE, 	02
+		JUMP 	Z, 			RECDATA
+
+		COMPARE IN_STATE, 	03
+		JUMP 	Z, 			STOPPBIT
 		
-		COMPARE STATE, 02
-		JUMP 	Z, DATA
+		COMPARE OUT_STATE,	01
+		JUMP	Z,			
 		
-		COMPARE STATE, 03
-		JUMP 	Z, STOPPBIT
+		COMPARE OUT_STATE,	02
+		JUMP	Z,
 		
+		COMPARE OUT_STATE,	03
+		JUMP	Z,
 		
 		OUTPUT 	IOR,  COM_Port ; TXD ausgeben
         RETURN
@@ -91,41 +117,139 @@ COMM:
 ; war, oder ob es sich wirklich um das Startbit handelt.
 ; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
 FALLINGFLANK:
+		COMPARE IOR, 		00
+		RETURN	NZ
+		ADD		IN_STATE,	01
+		RETURN
 		
-		COMPARE CNTZERO, 08
-		JUMP NZ, FALLINGFLANK
-		COMPARE IOR, 00
-		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die überprüft ob die fallende Flanke nur eine Leitungsstörung
+; war, oder ob es sich wirklich um das Startbit handelt.
+; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
+STARTBIT:
+		SUB 	MOD8, 			01
+		RETURN 	NZ
+		LOAD	MOD8, 			08
+		COMPARE IOR, 			00
+		RETURN 	NZ
+		ADD 	IN_STATE, 		01
+		LOAD	DATA_BUFFER,	00
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die 
-STARTBIT:
-
-		RETURN
-		
-; --------------------------------------------------------------------------------------------
-
-; Subroutine, 
-DATA:
-
+RECDATA:
+		SUB		MOD16, 		01
+		RETURN	NZ
+		LOAD	MOD16,		0F
+		RR		DATA_BUFFER
+		OR		IOR, 		(DATA_BUFFER)
+		SUB		MOD8, 		01
+		RETURN	NZ
+		ADD		IN_STATE, 	01
+		LOAD	MOD8,		08		
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, 
 STOPPBIT:
-
-		RETURN
+		SUB		MOD16, 			01
+		RETURN	NZ
+		LOAD	IN_STATE,		00
+		LOAD	MOD16,			0F
+		COMPARE IOR, 			01
+		RETURN 	NZ
+		LOAD	OUT_STATE, 		01
+		JUMP	DATA_PROCESSING
 		
 ; --------------------------------------------------------------------------------------------
+
+; Subroutine,
+DATA_PROCESSING:
+		
+		COMPARE	DATA_BUFFER,	MIN_NUM
+		RETURN	C 
+		
+		COMPARE DATA_BUFFER,	MAX_NUM
+		JUMP	C,				WRITE_ENABLE
+		
+		COMPARE DATA_BUFFER,	MIN_BA
+		RETURN	C
+		
+		COMPARE DATA_BUFFER,	MAX_BA
+		JUMP	C,				WRITE_ENABLE
+		
+		COMPARE DATA_BUFFER,	MIN_SA
+		RETURN	C 
+		
+		COMPARE DATA_BUFFER,	MAX_SA
+		JUMP	C,				WRITE_ENABLE
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die 
+WRITE_ENABLE:
+		LOAD	WRITE_BUFFER,	DATA_BUFFER
+		ADD		OUT_STATE,		00
+	
+		RETURN
+
+; --------------------------------------------------------------------------------------------
         
+; Subroutine, die
+COMM_OUT:
+		COMPARE	OUT_STATE,		00
+		JUMP	Z,				W_STARTBIT
+		
+		COMPARE	OUT_STATE,		01
+		JUMP	Z,				W_DATA
+		
+		COMPARE	OUT_STATE,		02
+		JUMP	Z,				W_STOPPBIT
+		
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die
+W_STARTBIT:
+		AND		IOR,			00
+		OUTPUT	IOR,			COM-Port
+		ADD		OUT_STATE,		01
+		RETURN
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die
+W_DATA:
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	MOD16_W,		0F
+		OUTPUT	WRITE_BUFFER,	COM-Port
+		RR		WRITE_BUFFER
+		SUB		MOD8_W,			01
+		RETURN	NZ
+		LOAD	MOD8_W,			08
+		ADD		OUT_STATE		01
+		RETURN
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die
+W_STOPPBIT:
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	IOR,			01
+		OUTPUT	IOR,			COM-Port
+		ADD		OUT_STATE,		01
+		RETURN
+; --------------------------------------------------------------------------------------------
         ADDRESS 300
 ; Interrupt-Service-Routine
-ISR:    CALL    BNT0LED0
+ISR:	CALL	COMM_OUT
+		CALL    COMM_IN
+		CALL    BNT0LED0
         CALL    BLINK
-        CALL    COMM
         RETURNI ENABLE
 
 ; --------------------------------------------------------------------------------------------

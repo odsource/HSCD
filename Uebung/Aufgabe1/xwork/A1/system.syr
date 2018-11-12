@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.44 secs
+Total CPU time to Xst completion: 0.40 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.44 secs
+Total CPU time to Xst completion: 0.40 secs
  
 --> Reading design: system.prj
 
@@ -104,21 +104,27 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "C:/Users/user/HSCD/ChristophKaiser/FDSx2.vhd" in Library work.
-Entity <FDSx2> compiled.
-Entity <FDSx2> (Architecture <structure>) compiled.
-Compiling vhdl file "C:/Users/user/HSCD/ChristophKaiser/timer.vhd" in Library work.
-Entity <timer> compiled.
-Entity <timer> (Architecture <behaviour>) compiled.
-Compiling vhdl file "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" in Library work.
-Entity <kcpsm3> compiled.
-Entity <kcpsm3> (Architecture <low_level_definition>) compiled.
-Compiling vhdl file "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" in Library work.
+WARNING:HDLParsers:3607 - Unit work/system is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/system.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/Aufgabe1/system.vhd".
+WARNING:HDLParsers:3607 - Unit work/system/structure is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/system.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/Aufgabe1/system.vhd".
+WARNING:HDLParsers:3607 - Unit work/programm is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD", and is now defined in "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD".
+WARNING:HDLParsers:3607 - Unit work/programm/low_level_definition is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD", and is now defined in "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD".
+WARNING:HDLParsers:3607 - Unit work/FDSx2 is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/FDSx2.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/FDSx2.vhd".
+WARNING:HDLParsers:3607 - Unit work/FDSx2/structure is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/FDSx2.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/FDSx2.vhd".
+WARNING:HDLParsers:3607 - Unit work/kcpsm3 is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/kcpsm3.vhd".
+WARNING:HDLParsers:3607 - Unit work/kcpsm3/low_level_definition is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/kcpsm3.vhd".
+WARNING:HDLParsers:3607 - Unit work/timer is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/timer.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/timer.vhd".
+WARNING:HDLParsers:3607 - Unit work/timer/behaviour is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/timer.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/timer.vhd".
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/FDSx2.vhd" in Library work.
+Architecture structure of Entity fdsx2 is up to date.
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/timer.vhd" in Library work.
+Architecture behaviour of Entity timer is up to date.
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" in Library work.
+Architecture low_level_definition of Entity kcpsm3 is up to date.
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" in Library work.
 Entity <programm> compiled.
 Entity <programm> (Architecture <low_level_definition>) compiled.
-Compiling vhdl file "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/system.vhd" in Library work.
-Entity <system> compiled.
-Entity <system> (Architecture <structure>) compiled.
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/Aufgabe1/system.vhd" in Library work.
+Architecture structure of Entity system is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -134,117 +140,117 @@ Analyzing hierarchy for entity <kcpsm3> in library <work> (architecture <low_lev
 
 Analyzing hierarchy for entity <programm> in library <work> (architecture <low_level_definition>).
 
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 289: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1202: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 454: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 485: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 608: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 616: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 383: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 425: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 527: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 599: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 684: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1111: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1138: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1222: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1271: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 334: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 373: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 405: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 415: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 434: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 444: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 470: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 495: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 556: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 589: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 796: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 873: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 888: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 939: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 958: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1246: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1303: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1313: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1329: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1417: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1450: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 830: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 1370: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd" line 908: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INITP_00> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INITP_01> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INITP_02> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INITP_03> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INITP_04> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INITP_05> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INITP_06> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INITP_07> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_00> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_01> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_02> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_03> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_04> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_05> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_06> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_07> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_08> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_09> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_0A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_0B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_0C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_0D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_0E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_0F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_10> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_11> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_12> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_13> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_14> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_15> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_16> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_17> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_18> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_19> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_1A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_1B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_1C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_1D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_1E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_1F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_20> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_21> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_22> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_23> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_24> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_25> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_26> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_27> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_28> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_29> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_2A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_2B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_2C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_2D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_2E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_2F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_30> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_31> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_32> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_33> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_34> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_35> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_36> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_37> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_38> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_39> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_3A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_3B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_3C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_3D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_3E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD" line 182: attribute on instance <INIT_3F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 289: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1202: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 454: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 485: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 608: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 616: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 383: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 425: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 527: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 599: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 684: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1111: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1138: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1222: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1271: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 334: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 373: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 405: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 415: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 434: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 444: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 470: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 495: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 556: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 589: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 796: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 873: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 888: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 939: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 958: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1246: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1303: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1313: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1329: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1417: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1450: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 830: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1370: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 908: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_00> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_01> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_02> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_03> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_04> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_05> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_06> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_07> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_00> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_01> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_02> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_03> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_04> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_05> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_06> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_07> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_08> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_09> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_10> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_11> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_12> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_13> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_14> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_15> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_16> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_17> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_18> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_19> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_20> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_21> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_22> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_23> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_24> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_25> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_26> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_27> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_28> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_29> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_30> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_31> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_32> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_33> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_34> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_35> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_36> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_37> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_38> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_39> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -479,7 +485,7 @@ Entity <kcpsm3> analyzed. Unit <kcpsm3> generated.
 
 Analyzing Entity <programm> in library <work> (Architecture <low_level_definition>).
     Set user-defined property "INIT =  000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000A0A0D68280F0" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_00 =  000000000000000000000000000000000000007476B4676B77740A0D68280F00" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -487,10 +493,10 @@ Analyzing Entity <programm> in library <work> (Architecture <low_level_definitio
     Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_06 =  00000000000000000000000000000000000000000000000000000000000000FF" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_07 =  C000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_00 =  5C13A2008301A000C000D010A002010E010EA104410040004003C001A300A200" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_01 =  00000000000000000000000000000000A000C001A0014001A000C000E0024000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_00 =  8301A000C000D010A002010E010EA104410040004005C001A400A600A300A200" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_01 =  460250294601502346005416400005FF04084001A000C000E00240005C15A200" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_02 =  86015429C401F070070E5429C50104088601B40050405423C401A000C0015031" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_03 =  00000000000000000000000000000000000000000000000040015431C4010408" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -535,7 +541,7 @@ Analyzing Entity <programm> in library <work> (Architecture <low_level_definitio
     Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_30 =  00000000000000000000000000000000000000000000000080010014000D0004" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_30 =  00000000000000000000000000000000000000000000000080010016000F0006" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -563,7 +569,7 @@ Entity <programm> analyzed. Unit <programm> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <timer>.
-    Related source file is "C:/Users/user/HSCD/ChristophKaiser/timer.vhd".
+    Related source file is "C:/Users/user/HSCD/Uebung/timer.vhd".
     Found 1-bit register for signal <irq>.
     Found 25-bit register for signal <acc>.
     Found 25-bit adder for signal <acc$add0000> created at line 42.
@@ -574,23 +580,23 @@ Unit <timer> synthesized.
 
 
 Synthesizing Unit <FDSx2>.
-    Related source file is "C:/Users/user/HSCD/ChristophKaiser/FDSx2.vhd".
+    Related source file is "C:/Users/user/HSCD/Uebung/FDSx2.vhd".
 Unit <FDSx2> synthesized.
 
 
 Synthesizing Unit <kcpsm3>.
-    Related source file is "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd".
+    Related source file is "C:/Users/user/HSCD/Uebung/kcpsm3.vhd".
 WARNING:Xst:1780 - Signal <reset_delay> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 Unit <kcpsm3> synthesized.
 
 
 Synthesizing Unit <programm>.
-    Related source file is "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD".
+    Related source file is "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD".
 Unit <programm> synthesized.
 
 
 Synthesizing Unit <system>.
-    Related source file is "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/system.vhd".
+    Related source file is "C:/Users/user/HSCD/Uebung/Aufgabe1/system.vhd".
 WARNING:Xst:646 - Signal <read_strobe> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <port_id<7:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <out_port<7:2>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -852,13 +858,13 @@ Offset:              6.280ns (Levels of Logic = 1)
 
 
 Total REAL time to Xst completion: 17.00 secs
-Total CPU time to Xst completion: 16.52 secs
+Total CPU time to Xst completion: 16.50 secs
  
 --> 
 
-Total memory usage is 275612 kilobytes
+Total memory usage is 279428 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  119 (   0 filtered)
+Number of warnings :  129 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 

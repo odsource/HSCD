@@ -1,0 +1,9 @@
+Table of constant values and their specified constant labels.
+
+00  IO_Port
+01  LED0
+02  LED1
+04  BNT0
+01  COM_Port
+01  TXD
+01  RXD
