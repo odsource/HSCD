@@ -8,12 +8,12 @@
         CONSTANT TXD,      01
         CONSTANT RXD,      01
 		
-		CONSTANT MIN_NUM   30
-		CONSTANT MAX_NUM   3A
-		CONSTANT MIN_BA	   41
-		CONSTANT MAX_BA	   5B
-		CONSTANT MIN_SA	   61
-		CONSTANT MAX_SA	   7B
+		CONSTANT MIN_NUM,  30
+		CONSTANT MAX_NUM,  3A
+		CONSTANT MIN_BA,   41
+		CONSTANT MAX_BA,   5B
+		CONSTANT MIN_SA,   61
+		CONSTANT MAX_SA,   7B
 
 ; Register Mapping
 ; alle acht Register s0 bis sF stehen der ISR zur Verfuegung
@@ -80,7 +80,7 @@ BLINK0: RETURN
 ;
 ; in dieser Version ist eine einfache Echo-Funktion implementiert
 COMM_IN:   
-        INPUT  	IOR,  	COM_Port ; COM-Port einlesen
+        INPUT  	IOR,  	COM_Port ; COM_Port einlesen
 ;       AND    	IOR,  	RXD      ; Zustand von RXD ermitteln
 
 		
@@ -95,15 +95,6 @@ COMM_IN:
 
 		COMPARE IN_STATE, 	03
 		JUMP 	Z, 			STOPPBIT
-		
-		COMPARE OUT_STATE,	01
-		JUMP	Z,			
-		
-		COMPARE OUT_STATE,	02
-		JUMP	Z,
-		
-		COMPARE OUT_STATE,	03
-		JUMP	Z,
 		
 		OUTPUT 	IOR,  COM_Port ; TXD ausgeben
         RETURN
@@ -141,15 +132,15 @@ STARTBIT:
 
 ; Subroutine, die 
 RECDATA:
-		SUB		MOD16, 		01
+		SUB		MOD16, 			01
 		RETURN	NZ
-		LOAD	MOD16,		0F
+		LOAD	MOD16,			0F
 		RR		DATA_BUFFER
-		OR		IOR, 		(DATA_BUFFER)
-		SUB		MOD8, 		01
+		OR		DATA_BUFFER, 	IOR
+		SUB		MOD8, 			01
 		RETURN	NZ
-		ADD		IN_STATE, 	01
-		LOAD	MOD8,		08		
+		ADD		IN_STATE, 		01
+		LOAD	MOD8,			08		
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
@@ -216,7 +207,7 @@ COMM_OUT:
 ; Subroutine, die
 W_STARTBIT:
 		AND		IOR,			00
-		OUTPUT	IOR,			COM-Port
+		OUTPUT 	IOR,  			COM_Port
 		ADD		OUT_STATE,		01
 		RETURN
 ; --------------------------------------------------------------------------------------------
@@ -226,12 +217,12 @@ W_DATA:
 		SUB		MOD16_W,		01
 		RETURN	NZ
 		LOAD	MOD16_W,		0F
-		OUTPUT	WRITE_BUFFER,	COM-Port
+		OUTPUT	WRITE_BUFFER,	COM_Port
 		RR		WRITE_BUFFER
 		SUB		MOD8_W,			01
 		RETURN	NZ
 		LOAD	MOD8_W,			08
-		ADD		OUT_STATE		01
+		ADD		OUT_STATE,		01
 		RETURN
 ; --------------------------------------------------------------------------------------------
 
@@ -240,7 +231,7 @@ W_STOPPBIT:
 		SUB		MOD16_W,		01
 		RETURN	NZ
 		LOAD	IOR,			01
-		OUTPUT	IOR,			COM-Port
+		OUTPUT	IOR,			COM_Port
 		ADD		OUT_STATE,		01
 		RETURN
 ; --------------------------------------------------------------------------------------------
