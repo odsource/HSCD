@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.40 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.40 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Reading design: system.prj
 
@@ -104,16 +104,6 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-WARNING:HDLParsers:3607 - Unit work/system is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/system.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/Aufgabe1/system.vhd".
-WARNING:HDLParsers:3607 - Unit work/system/structure is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/system.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/Aufgabe1/system.vhd".
-WARNING:HDLParsers:3607 - Unit work/programm is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD", and is now defined in "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD".
-WARNING:HDLParsers:3607 - Unit work/programm/low_level_definition is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/Aufgabe1/asm/PROGRAMM.VHD", and is now defined in "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD".
-WARNING:HDLParsers:3607 - Unit work/FDSx2 is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/FDSx2.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/FDSx2.vhd".
-WARNING:HDLParsers:3607 - Unit work/FDSx2/structure is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/FDSx2.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/FDSx2.vhd".
-WARNING:HDLParsers:3607 - Unit work/kcpsm3 is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/kcpsm3.vhd".
-WARNING:HDLParsers:3607 - Unit work/kcpsm3/low_level_definition is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/kcpsm3.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/kcpsm3.vhd".
-WARNING:HDLParsers:3607 - Unit work/timer is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/timer.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/timer.vhd".
-WARNING:HDLParsers:3607 - Unit work/timer/behaviour is now defined in a different file.  It was defined in "C:/Users/user/HSCD/ChristophKaiser/timer.vhd", and is now defined in "C:/Users/user/HSCD/Uebung/timer.vhd".
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/FDSx2.vhd" in Library work.
 Architecture structure of Entity fdsx2 is up to date.
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/timer.vhd" in Library work.
@@ -485,22 +475,22 @@ Entity <kcpsm3> analyzed. Unit <kcpsm3> generated.
 
 Analyzing Entity <programm> in library <work> (Architecture <low_level_definition>).
     Set user-defined property "INIT =  000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INITP_00 =  000000000000000000000000000000000000007476B4676B77740A0D68280F00" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_00 =  000262666898609ADDD8836767667D098660987499989DDDD2835A0A03C00000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INITP_06 =  00000000000000000000000000000000000000000000000000000000000000FF" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_06 =  00000000000000000000000000000000000000000000000000000000000003FF" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_07 =  C000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_00 =  8301A000C000D010A002010E010EA104410040004005C001A400A600A300A200" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_01 =  460250294601502346005416400005FF04084001A000C000E00240005C15A200" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_02 =  86015429C401F070070E5429C50104088601B40050405423C401A000C0015031" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_03 =  00000000000000000000000000000000000000000000000040015431C4010408" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_00 =  A10441004000400CC0010D01A900A8000B080A1005100408A705A600A300A200" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_01 =  503646024001A000C000E00240005C1CA2008301A000C000D010A002010E010E" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_02 =  B400C401A0008601B4004000A0000A10B400CA0150404603502E4601502A4600" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_03 =  A00004088601B400C401080CD8000510B400C501A00008008601545840000408" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_04 =  485BB80048415855483AB8004830BC00487B40475458400105100600B400C501" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_05 =  50734702506A470150624700A0000600A000070019805855487BB80048615855" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_06 =  CB01090CC9010A10B400CA01A0000B088701C001A0000A10B400CA01A000CD01" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000A0008701CD010A10B400CA01A0008701B400" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -541,7 +531,7 @@ Analyzing Entity <programm> in library <work> (Architecture <low_level_definitio
     Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_30 =  00000000000000000000000000000000000000000000000080010016000F0006" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000080010016000D001D005A" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -857,14 +847,14 @@ Offset:              6.280ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 17.00 secs
-Total CPU time to Xst completion: 16.50 secs
+Total REAL time to Xst completion: 16.00 secs
+Total CPU time to Xst completion: 15.54 secs
  
 --> 
 
-Total memory usage is 279428 kilobytes
+Total memory usage is 279812 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  129 (   0 filtered)
+Number of warnings :  119 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 

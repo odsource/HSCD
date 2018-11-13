@@ -29,19 +29,24 @@
 		NAMEREG s9, WRITE_BUFFER
 		NAMEREG sA,	MOD16_W
 		NAMEREG sB,	MOD8_W
+		NAMEREG sD,	ONE_OUT
 
 ; --------------------------------------------------------------------------------------------
 
         ADDRESS 000
 ; Hauptfunktion
-start:  AND    CNTH, 00   	; Initialisierung der Zaehlers ...
-        AND    CNTL, 00   	; in der ISR
-		AND	   IN_STATE,  00
-		AND	   OUT_STATE, 00
-		LOAD   MOD8, 08		; Initialisierung des modulo 8 Zaehlers
-		LOAD   MOD16, 0F	; Initialisierung des modulo 8 Zaehlers
-		LOAD   MOD16_W, 0F
-		LOAD	MOD8_W,	08
+start:  AND    	CNTH, 00   	; Initialisierung der Zaehlers ...
+        AND    	CNTL, 00   	; in der ISR
+		AND	   	IN_STATE,  00
+		AND	   	OUT_STATE, 05
+		LOAD   	MOD8, 08		; Initialisierung des modulo 8 Zaehlers
+		LOAD   	MOD16, 10	; Initialisierung des modulo 8 Zaehlers
+		LOAD   	MOD16_W, 10
+		LOAD   	MOD8_W,	08
+		AND   	DATA_BUFFER, 00
+		AND		WRITE_BUFFER, 00
+		LOAD	ONE_OUT, 01
+		
         ENABLE INTERRUPT
 loop:   ; do nothing
         JUMP loop
@@ -83,20 +88,23 @@ COMM_IN:
         INPUT  	IOR,  	COM_Port ; COM_Port einlesen
 ;       AND    	IOR,  	RXD      ; Zustand von RXD ermitteln
 
+
+		COMPARE IN_STATE, 	02
+		JUMP 	Z, 			RECDATA
 		
 		COMPARE IN_STATE, 	00
 		JUMP	Z,			FALLINGFLANK
 
 		COMPARE	IN_STATE,	01
 		JUMP   	Z, 			STARTBIT
-		
-		COMPARE IN_STATE, 	02
-		JUMP 	Z, 			RECDATA
 
 		COMPARE IN_STATE, 	03
 		JUMP 	Z, 			STOPPBIT
 		
-		OUTPUT 	IOR,  COM_Port ; TXD ausgeben
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	MOD16_W,		10
+
         RETURN
 		; idle, fallende flanke, start bit erkannt wenn nicht abbrechen, daten, stoppbit 
 		; mod 16 für daten
@@ -112,7 +120,7 @@ FALLINGFLANK:
 		RETURN	NZ
 		ADD		IN_STATE,	01
 		RETURN
-		
+
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die überprüft ob die fallende Flanke nur eine Leitungsstörung
@@ -123,7 +131,7 @@ STARTBIT:
 		RETURN 	NZ
 		LOAD	MOD8, 			08
 		COMPARE IOR, 			00
-		RETURN 	NZ
+		JUMP 	NZ,				RESET
 		ADD 	IN_STATE, 		01
 		LOAD	DATA_BUFFER,	00
 		RETURN
@@ -134,13 +142,13 @@ STARTBIT:
 RECDATA:
 		SUB		MOD16, 			01
 		RETURN	NZ
-		LOAD	MOD16,			0F
-		RR		DATA_BUFFER
+		LOAD	MOD16,			10
 		OR		DATA_BUFFER, 	IOR
+		RR		DATA_BUFFER
 		SUB		MOD8, 			01
 		RETURN	NZ
 		ADD		IN_STATE, 		01
-		LOAD	MOD8,			08		
+		LOAD	MOD8,			08
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
@@ -150,16 +158,17 @@ STOPPBIT:
 		SUB		MOD16, 			01
 		RETURN	NZ
 		LOAD	IN_STATE,		00
-		LOAD	MOD16,			0F
+		LOAD	MOD16,			10
 		COMPARE IOR, 			01
-		RETURN 	NZ
-		LOAD	OUT_STATE, 		01
+		JUMP 	NZ,				RESET
 		JUMP	DATA_PROCESSING
 		
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine,
 DATA_PROCESSING:
+		COMPARE DATA_BUFFER,	MAX_SA
+		RETURN	NC
 		
 		COMPARE	DATA_BUFFER,	MIN_NUM
 		RETURN	C 
@@ -184,14 +193,22 @@ DATA_PROCESSING:
 ; Subroutine, die 
 WRITE_ENABLE:
 		LOAD	WRITE_BUFFER,	DATA_BUFFER
-		ADD		OUT_STATE,		00
+		LOAD	OUT_STATE,		00
+		
+		
 	
+		RETURN
+		
+; --------------------------------------------------------------------------------------------
+
+RESET:
+		LOAD IN_STATE,	00
 		RETURN
 
 ; --------------------------------------------------------------------------------------------
         
 ; Subroutine, die
-COMM_OUT:
+COMM_OUT:			
 		COMPARE	OUT_STATE,		00
 		JUMP	Z,				W_STARTBIT
 		
@@ -201,14 +218,22 @@ COMM_OUT:
 		COMPARE	OUT_STATE,		02
 		JUMP	Z,				W_STOPPBIT
 		
+		OUTPUT	ONE_OUT,		COM_Port
+		RETURN
 		
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die
 W_STARTBIT:
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	MOD16_W,		10
+		
 		AND		IOR,			00
 		OUTPUT 	IOR,  			COM_Port
+		
 		ADD		OUT_STATE,		01
+		LOAD	MOD8_W,			08
 		RETURN
 ; --------------------------------------------------------------------------------------------
 
@@ -216,13 +241,16 @@ W_STARTBIT:
 W_DATA:
 		SUB		MOD16_W,		01
 		RETURN	NZ
-		LOAD	MOD16_W,		0F
+		LOAD	MOD16_W,		10
+		
 		OUTPUT	WRITE_BUFFER,	COM_Port
 		RR		WRITE_BUFFER
+		
 		SUB		MOD8_W,			01
 		RETURN	NZ
-		LOAD	MOD8_W,			08
+		
 		ADD		OUT_STATE,		01
+		
 		RETURN
 ; --------------------------------------------------------------------------------------------
 
@@ -230,9 +258,12 @@ W_DATA:
 W_STOPPBIT:
 		SUB		MOD16_W,		01
 		RETURN	NZ
-		LOAD	IOR,			01
-		OUTPUT	IOR,			COM_Port
-		ADD		OUT_STATE,		01
+		LOAD	MOD16_W,		10
+		
+		OUTPUT	ONE_OUT,		COM_Port
+		
+		ADD	OUT_STATE,		01
+		
 		RETURN
 ; --------------------------------------------------------------------------------------------
         ADDRESS 300

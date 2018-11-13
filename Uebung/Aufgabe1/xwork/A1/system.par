@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-VBOX-PC::  Sun Nov 11 22:16:59 2018
+VBOX-PC::  Tue Nov 13 12:16:44 2018
 
 par -w -intstyle ise -ol high -t 1 system_map.ncd system.ncd system.pcf 
 
@@ -39,29 +39,29 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 1 secs 
-Finished initial Timing Analysis.  REAL time: 1 secs 
+Starting initial Timing Analysis.  REAL time: 2 secs 
+Finished initial Timing Analysis.  REAL time: 2 secs 
 
 
 Starting Placer
 Total REAL time at the beginning of Placer: 2 secs 
-Total CPU  time at the beginning of Placer: 1 secs 
+Total CPU  time at the beginning of Placer: 0 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:aa7c601f) REAL time: 3 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:aa7c601f) REAL time: 2 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:aa7c601f) REAL time: 3 secs 
+Phase 2.7  Design Feasibility Check (Checksum:aa7c601f) REAL time: 2 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:aa7c601f) REAL time: 3 secs 
+Phase 3.31  Local Placement Optimization (Checksum:aa7c601f) REAL time: 2 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:aaad521f) REAL time: 3 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:aaad521f) REAL time: 2 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:aaad521f) REAL time: 3 secs 
+Phase 5.36  Local Placement Optimization (Checksum:aaad521f) REAL time: 2 secs 
 
 Phase 6.8  Global Placement
 ...................
@@ -72,7 +72,7 @@ Phase 6.8  Global Placement
 Phase 6.8  Global Placement (Checksum:e635bc52) REAL time: 5 secs 
 
 Phase 7.5  Local Placement Optimization
-Phase 7.5  Local Placement Optimization (Checksum:e635bc52) REAL time: 6 secs 
+Phase 7.5  Local Placement Optimization (Checksum:e635bc52) REAL time: 5 secs 
 
 Phase 8.18  Placement Optimization
 Phase 8.18  Placement Optimization (Checksum:5b35bfa0) REAL time: 6 secs 
@@ -81,7 +81,7 @@ Phase 9.5  Local Placement Optimization
 Phase 9.5  Local Placement Optimization (Checksum:5b35bfa0) REAL time: 6 secs 
 
 Total REAL time to Placer completion: 6 secs 
-Total CPU  time to Placer completion: 3 secs 
+Total CPU  time to Placer completion: 2 secs 
 Writing design to file system.ncd
 
 
@@ -89,15 +89,15 @@ Writing design to file system.ncd
 Starting Router
 
 
-Phase  1  : 1007 unrouted;      REAL time: 7 secs 
+Phase  1  : 1007 unrouted;      REAL time: 6 secs 
 
-Phase  2  : 900 unrouted;      REAL time: 7 secs 
+Phase  2  : 900 unrouted;      REAL time: 6 secs 
 
-Phase  3  : 224 unrouted;      REAL time: 7 secs 
+Phase  3  : 224 unrouted;      REAL time: 6 secs 
 
 Phase  4  : 246 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 8 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
 Updating file: system.ncd with current fully routed design.
 
@@ -112,7 +112,7 @@ Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 1
 Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 10 secs 
 
 Total REAL time to Router completion: 10 secs 
-Total CPU time to Router completion: 5 secs 
+Total CPU time to Router completion: 4 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -168,9 +168,9 @@ Generating Pad Report.
 All signals are completely routed.
 
 Total REAL time to PAR completion: 11 secs 
-Total CPU time to PAR completion: 6 secs 
+Total CPU time to PAR completion: 4 secs 
 
-Peak Memory Usage:  259 MB
+Peak Memory Usage:  260 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.
