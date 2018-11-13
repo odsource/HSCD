@@ -160,7 +160,7 @@ STOPPBIT:
 		LOAD	IN_STATE,		00
 		LOAD	MOD16,			10
 		COMPARE IOR, 			01
-		JUMP 	NZ,				RESET
+		RETURN  NZ
 		JUMP	DATA_PROCESSING
 		
 ; --------------------------------------------------------------------------------------------
@@ -195,8 +195,6 @@ WRITE_ENABLE:
 		LOAD	WRITE_BUFFER,	DATA_BUFFER
 		LOAD	OUT_STATE,		00
 		
-		
-	
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
