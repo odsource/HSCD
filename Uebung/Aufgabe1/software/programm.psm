@@ -35,10 +35,10 @@
 
         ADDRESS 000
 ; Hauptfunktion
-start:  AND    	CNTH, 00   	; Initialisierung der Zaehlers ...
+start:  AND    	CNTH, 00   	; Initialisierung des Zaehlers ...
         AND    	CNTL, 00   	; in der ISR
 		AND	   	IN_STATE,  00
-		AND	   	OUT_STATE, 05
+		LOAD	OUT_STATE, 05
 		LOAD   	MOD8, 08		; Initialisierung des modulo 8 Zaehlers
 		LOAD   	MOD16, 10	; Initialisierung des modulo 8 Zaehlers
 		LOAD   	MOD16_W, 10

@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.20 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.85 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.20 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.85 secs
  
 --> Reading design: system.prj
 
@@ -483,7 +483,7 @@ Analyzing Entity <programm> in library <work> (Architecture <low_level_definitio
     Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_06 =  00000000000000000000000000000000000000000000000000000000000003FF" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_07 =  C000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_00 =  A10441004000400CC0010D01A900A8000B080A1005100408A705A600A300A200" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_00 =  A10441004000400CC0010D01A900A8000B080A10051004080705A600A300A200" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_01 =  503646024001A000C000E00240005C1CA2008301A000C000D010A002010E010E" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_02 =  B400C401A0008601B4004000A0000A10B400CA0150404603502E4601502A4600" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_03 =  A00004088601B400C401080CD8000510B400C501A00008008601545840000408" for instance <ram_1024_x_18> in unit <programm>.
@@ -847,12 +847,12 @@ Offset:              6.280ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 16.00 secs
-Total CPU time to Xst completion: 15.87 secs
+Total REAL time to Xst completion: 20.00 secs
+Total CPU time to Xst completion: 20.17 secs
  
 --> 
 
-Total memory usage is 279876 kilobytes
+Total memory usage is 279620 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  119 (   0 filtered)
