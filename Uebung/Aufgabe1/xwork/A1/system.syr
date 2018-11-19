@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.85 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.85 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Reading design: system.prj
 
@@ -111,8 +111,7 @@ Architecture behaviour of Entity timer is up to date.
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" in Library work.
 Architecture low_level_definition of Entity kcpsm3 is up to date.
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/Aufgabe1/software/PROGRAMM.VHD" in Library work.
-Entity <programm> compiled.
-Entity <programm> (Architecture <low_level_definition>) compiled.
+Architecture low_level_definition of Entity programm is up to date.
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/Aufgabe1/system.vhd" in Library work.
 Architecture structure of Entity system is up to date.
 
@@ -847,12 +846,12 @@ Offset:              6.280ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 20.00 secs
-Total CPU time to Xst completion: 20.17 secs
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 9.50 secs
  
 --> 
 
-Total memory usage is 279620 kilobytes
+Total memory usage is 279876 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  119 (   0 filtered)
