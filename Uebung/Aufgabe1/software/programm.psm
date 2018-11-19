@@ -29,6 +29,7 @@
 		NAMEREG s9, WRITE_BUFFER
 		NAMEREG sA,	MOD16_W
 		NAMEREG sB,	MOD8_W
+		NAMEREG sD,	ONE_OUT
 
 ; --------------------------------------------------------------------------------------------
 
@@ -44,6 +45,7 @@ start:  AND    	CNTH, 00   	; Initialisierung des Zaehlers ...
 		LOAD   	MOD8_W,	08
 		AND   	DATA_BUFFER, 00
 		AND		WRITE_BUFFER, 00
+		LOAD	ONE_OUT, 01
 		
         ENABLE INTERRUPT
 loop:   ; do nothing
@@ -159,12 +161,7 @@ STOPPBIT:
 		LOAD	MOD16,			10
 		COMPARE IOR, 			01
 		RETURN  NZ
-		JUMP	DATA_PROCESSING
 		
-; --------------------------------------------------------------------------------------------
-
-; Subroutine,
-DATA_PROCESSING:
 		COMPARE DATA_BUFFER,	MAX_SA
 		RETURN	NC
 		
@@ -214,8 +211,7 @@ COMM_OUT:
 		COMPARE	OUT_STATE,		02
 		JUMP	Z,				W_STOPPBIT
 		
-		LOAD	TMP,			01
-		OUTPUT	TMP,			COM_Port
+		OUTPUT	ONE_OUT,		COM_Port
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
@@ -257,8 +253,7 @@ W_STOPPBIT:
 		RETURN	NZ
 		LOAD	MOD16_W,		10
 		
-		LOAD	TMP,		01
-		OUTPUT	TMP,		COM_Port
+		OUTPUT	ONE_OUT,		COM_Port
 		
 		ADD	OUT_STATE,		01
 		
