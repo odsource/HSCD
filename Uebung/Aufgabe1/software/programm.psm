@@ -85,7 +85,6 @@ BLINK0: RETURN
 ;
 ; in dieser Version ist eine einfache Echo-Funktion implementiert
 COMM_IN:   
-        INPUT  	IOR,  	COM_Port ; COM_Port einlesen
 ;       AND    	IOR,  	RXD      ; Zustand von RXD ermitteln
 
 
@@ -116,6 +115,7 @@ COMM_IN:
 ; war, oder ob es sich wirklich um das Startbit handelt.
 ; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
 FALLINGFLANK:
+		INPUT  	IOR,  		COM_Port ; COM_Port einlesen
 		COMPARE IOR, 		00
 		RETURN	NZ
 		ADD		IN_STATE,	01
@@ -127,9 +127,10 @@ FALLINGFLANK:
 ; war, oder ob es sich wirklich um das Startbit handelt.
 ; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
 STARTBIT:
-		SUB 	MOD8, 			01
+		SUB 	MOD8,			01
 		RETURN 	NZ
-		LOAD	MOD8, 			08
+		LOAD	MOD8,			08
+		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
 		COMPARE IOR, 			00
 		JUMP 	NZ,				RESET
 		ADD 	IN_STATE, 		01
@@ -143,12 +144,13 @@ RECDATA:
 		SUB		MOD16, 			01
 		RETURN	NZ
 		LOAD	MOD16,			10
+		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
 		OR		DATA_BUFFER, 	IOR
 		RR		DATA_BUFFER
-		SUB		MOD8, 			01
+		SUB		MOD8,			01
 		RETURN	NZ
-		ADD		IN_STATE, 		01
 		LOAD	MOD8,			08
+		ADD		IN_STATE, 		01
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
@@ -159,6 +161,7 @@ STOPPBIT:
 		RETURN	NZ
 		LOAD	IN_STATE,		00
 		LOAD	MOD16,			10
+		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
 		COMPARE IOR, 			01
 		RETURN  NZ
 		
@@ -227,7 +230,6 @@ W_STARTBIT:
 		OUTPUT 	IOR,  			COM_Port
 		
 		ADD		OUT_STATE,		01
-		LOAD	MOD8_W,			08
 		RETURN
 ; --------------------------------------------------------------------------------------------
 
@@ -242,6 +244,7 @@ W_DATA:
 		
 		SUB		MOD8_W,			01
 		RETURN	NZ
+		LOAD	MOD8_W,			08
 		
 		ADD		OUT_STATE,		01
 		
