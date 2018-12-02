@@ -199,6 +199,10 @@ COMM_OUT:
 		COMPARE	WRITE_ENABLE,	01
 		RETURN	NZ
 		
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	MOD16_W,		10
+		
 		COMPARE	OUT_STATE,		01
 		JUMP	Z,				W_DATA
 		
@@ -214,10 +218,6 @@ COMM_OUT:
 
 ; Subroutine, die
 W_STARTBIT:
-		SUB		MOD16_W,		01
-		RETURN	NZ
-		LOAD	MOD16_W,		10
-		
 		AND		IOR,			00
 		OUTPUT 	IOR,  			COM_Port
 		
@@ -227,10 +227,6 @@ W_STARTBIT:
 
 ; Subroutine, die
 W_DATA:
-		SUB		MOD16_W,		01
-		RETURN	NZ
-		LOAD	MOD16_W,		10
-		
 		OUTPUT	WRITE_BUFFER,	COM_Port
 		RR		WRITE_BUFFER
 		
@@ -245,10 +241,6 @@ W_DATA:
 
 ; Subroutine, die
 W_STOPPBIT:
-		SUB		MOD16_W,		01
-		RETURN	NZ
-		LOAD	MOD16_W,		10
-		
 		LOAD	TMP,		01
 		OUTPUT	TMP,		COM_Port
 		

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\user\HSCD\Uebung\Aufgabe2\xwork\A2\system.ncd
+OUTFILE=C:\Users\user\HSCD\Uebung\Aufgabe2\xwork\A2\system.bit
+FAMILY=Spartan3
+PART=xc3s200-5ft256
+WORKINGDIR=C:\Users\user\HSCD\Uebung\Aufgabe2\xwork\A2
+LICENSE=WebPack
+USER_INFO=175830942_175830944_0_871

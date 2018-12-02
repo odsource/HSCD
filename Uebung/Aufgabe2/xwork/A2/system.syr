@@ -1,0 +1,952 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Reading design: system.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "system.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "system"
+Output Format                      : NGC
+Target Device                      : xc3s200-5-ft256
+
+---- Source Options
+Top Module Name                    : system
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/FDSx2.vhd" in Library work.
+Entity <FDSx2> compiled.
+Entity <FDSx2> (Architecture <structure>) compiled.
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/timer.vhd" in Library work.
+Entity <timer> compiled.
+Entity <timer> (Architecture <behaviour>) compiled.
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" in Library work.
+Entity <kcpsm3> compiled.
+Entity <kcpsm3> (Architecture <low_level_definition>) compiled.
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" in Library work.
+Entity <programm> compiled.
+Entity <programm> (Architecture <low_level_definition>) compiled.
+Compiling vhdl file "C:/Users/user/HSCD/Uebung/Aufgabe2/system.vhd" in Library work.
+Entity <system> compiled.
+Entity <system> (Architecture <structure>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <system> in library <work> (architecture <structure>).
+
+Analyzing hierarchy for entity <FDSx2> in library <work> (architecture <structure>).
+
+Analyzing hierarchy for entity <timer> in library <work> (architecture <behaviour>) with generics.
+	RSTDEF = '1'
+
+Analyzing hierarchy for entity <kcpsm3> in library <work> (architecture <low_level_definition>).
+
+Analyzing hierarchy for entity <programm> in library <work> (architecture <low_level_definition>).
+
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 289: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1202: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 454: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 485: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 608: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 616: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 383: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 425: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 527: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 599: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 684: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1111: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1138: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1222: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1271: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 334: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 373: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 405: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 415: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 434: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 444: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 470: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 495: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 556: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 589: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 796: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 873: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 888: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 939: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 958: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1246: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1303: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1313: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1329: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1417: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1450: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 830: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 1370: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" line 908: attribute on instance <INIT> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_00> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_01> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_02> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_03> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_04> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_05> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_06> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INITP_07> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_00> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_01> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_02> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_03> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_04> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_05> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_06> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_07> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_08> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_09> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_0F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_10> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_11> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_12> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_13> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_14> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_15> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_16> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_17> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_18> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_19> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_1F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_20> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_21> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_22> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_23> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_24> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_25> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_26> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_27> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_28> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_29> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_2F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_30> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_31> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_32> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_33> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_34> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_35> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_36> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_37> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_38> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_39> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3A> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3B> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3C> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3D> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3E> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" line 182: attribute on instance <INIT_3F> overrides generic/parameter on component. It is possible that simulator will not take this attribute into account.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <system> in library <work> (Architecture <structure>).
+    Set user-defined property "INIT =  1" for instance <txd_ff> in unit <system>.
+    Set user-defined property "INIT =  1" for instance <led0_ff> in unit <system>.
+    Set user-defined property "INIT =  1" for instance <led1_ff> in unit <system>.
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_0B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_0C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_0D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_0E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_0F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_10 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_11 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_12 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_13 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_14 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_15 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_16 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_17 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_18 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_19 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_1A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_1B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_1C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_1D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_1E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_1F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_22 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_26 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_27 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_2A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_2B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_2C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_35 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_A =  000000000" for instance <ram> in unit <system>.
+    Set user-defined property "INIT_B =  000000000" for instance <ram> in unit <system>.
+    Set user-defined property "SIM_COLLISION_CHECK =  ALL" for instance <ram> in unit <system>.
+    Set user-defined property "SRVAL_A =  000000000" for instance <ram> in unit <system>.
+    Set user-defined property "SRVAL_B =  000000000" for instance <ram> in unit <system>.
+    Set user-defined property "WRITE_MODE_A =  WRITE_FIRST" for instance <ram> in unit <system>.
+    Set user-defined property "WRITE_MODE_B =  WRITE_FIRST" for instance <ram> in unit <system>.
+Entity <system> analyzed. Unit <system> generated.
+
+Analyzing Entity <FDSx2> in library <work> (Architecture <structure>).
+    Set user-defined property "INIT =  1" for instance <ff1> in unit <FDSx2>.
+    Set user-defined property "INIT =  1" for instance <ff2> in unit <FDSx2>.
+Entity <FDSx2> analyzed. Unit <FDSx2> generated.
+
+Analyzing generic Entity <timer> in library <work> (Architecture <behaviour>).
+	RSTDEF = '1'
+Entity <timer> analyzed. Unit <timer> generated.
+
+Analyzing Entity <kcpsm3> in library <work> (Architecture <low_level_definition>).
+    Set user-defined property "INIT =  1" for instance <t_state_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <toggle_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <int_capture_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0080" for instance <int_pulse_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <int_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <ack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shadow_carry_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shadow_zero_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  EAAA" for instance <int_update_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  04" for instance <int_value_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <int_enable_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  7400" for instance <move_group_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  5A3C" for instance <condition_met_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  2F" for instance <normal_count_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  1000" for instance <call_type_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  5400" for instance <push_pop_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  D" for instance <valid_move_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  41FC" for instance <flag_type_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <flag_write_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  8" for instance <flag_enable_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0001" for instance <low_zero_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0001" for instance <high_zero_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  3F" for instance <sel_shadow_zero_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <zero_flag_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6996" for instance <low_parity_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6996" for instance <high_parity_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  F3FF" for instance <sel_parity_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  F3" for instance <sel_arith_carry_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  C" for instance <sel_shift_carry_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  3" for instance <sel_shadow_carry_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <carry_flag_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[0].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[0].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[0].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[1].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[1].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[1].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[2].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[2].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[2].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[3].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[3].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[3].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[4].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[4].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[4].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[5].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[5].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[5].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[6].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[6].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[6].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[7].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[7].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[7].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[8].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[8].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[8].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[9].vector_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <pc_loop[9].value_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pc_loop[9].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0145" for instance <register_type_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <register_write_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  8" for instance <register_enable_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000" for instance <reg_loop[0].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <reg_loop[0].operand_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000" for instance <reg_loop[1].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <reg_loop[1].operand_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000" for instance <reg_loop[2].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <reg_loop[2].operand_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000" for instance <reg_loop[3].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <reg_loop[3].operand_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000" for instance <reg_loop[4].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <reg_loop[4].operand_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000" for instance <reg_loop[5].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <reg_loop[5].operand_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000" for instance <reg_loop[6].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <reg_loop[6].operand_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000" for instance <reg_loop[7].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <reg_loop[7].operand_select_mux> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0400" for instance <memory_type_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <memory_write_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  8000" for instance <memory_enable_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000000000000000" for instance <store_loop[0].memory_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <store_loop[0].store_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000000000000000" for instance <store_loop[1].memory_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <store_loop[1].store_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000000000000000" for instance <store_loop[2].memory_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <store_loop[2].store_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000000000000000" for instance <store_loop[3].memory_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <store_loop[3].store_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000000000000000" for instance <store_loop[4].memory_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <store_loop[4].store_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000000000000000" for instance <store_loop[5].memory_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <store_loop[5].store_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000000000000000" for instance <store_loop[6].memory_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <store_loop[6].store_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0000000000000000" for instance <store_loop[7].memory_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <store_loop[7].store_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FFE2" for instance <sel_logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6E8A" for instance <logical_loop[0].logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <logical_loop[0].logical_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6E8A" for instance <logical_loop[1].logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <logical_loop[1].logical_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6E8A" for instance <logical_loop[2].logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <logical_loop[2].logical_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6E8A" for instance <logical_loop[3].logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <logical_loop[3].logical_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6E8A" for instance <logical_loop[4].logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <logical_loop[4].logical_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6E8A" for instance <logical_loop[5].logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <logical_loop[5].logical_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6E8A" for instance <logical_loop[6].logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <logical_loop[6].logical_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6E8A" for instance <logical_loop[7].logical_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <logical_loop[7].logical_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <high_shift_in_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <low_shift_in_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_carry_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <pipeline_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_loop[0].lsb_shift.shift_mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shift_loop[0].shift_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_loop[1].mid_shift.shift_mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shift_loop[1].shift_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_loop[2].mid_shift.shift_mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shift_loop[2].shift_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_loop[3].mid_shift.shift_mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shift_loop[3].shift_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_loop[4].mid_shift.shift_mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shift_loop[4].shift_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_loop[5].mid_shift.shift_mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shift_loop[5].shift_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_loop[6].mid_shift.shift_mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shift_loop[6].shift_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <shift_loop[7].msb_shift.shift_mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <shift_loop[7].shift_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  1F" for instance <sel_arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6C" for instance <arith_loop[0].lsb_arith.arith_carry_in_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  96" for instance <arith_loop[0].arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[0].arith_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  96" for instance <arith_loop[1].arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[1].arith_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  96" for instance <arith_loop[2].arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[2].arith_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  96" for instance <arith_loop[3].arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[3].arith_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  96" for instance <arith_loop[4].arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[4].arith_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  96" for instance <arith_loop[5].arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[5].arith_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  96" for instance <arith_loop[6].arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[6].arith_flop> in unit <kcpsm3>.
+WARNING:Xst:1961 - The length of the hex value for the attribute INIT on instance arith_loop[7].msb_arith.arith_carry_out_lut should be 2 bits long. The current value set is 4 bits long.  Value has been truncated
+    Set user-defined property "INIT =  2" for instance <arith_loop[7].msb_arith.arith_carry_out_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[7].msb_arith.arith_carry_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  96" for instance <arith_loop[7].arith_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <arith_loop[7].arith_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0002" for instance <input_fetch_type_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <sel_group_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FE" for instance <alu_mux_loop[0].or_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <alu_mux_loop[0].mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FE" for instance <alu_mux_loop[1].or_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <alu_mux_loop[1].mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FE" for instance <alu_mux_loop[2].or_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <alu_mux_loop[2].mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FE" for instance <alu_mux_loop[3].or_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <alu_mux_loop[3].mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FE" for instance <alu_mux_loop[4].or_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <alu_mux_loop[4].mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FE" for instance <alu_mux_loop[5].or_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <alu_mux_loop[5].mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FE" for instance <alu_mux_loop[6].or_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <alu_mux_loop[6].mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  FE" for instance <alu_mux_loop[7].or_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  E4" for instance <alu_mux_loop[7].mux_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0010" for instance <io_decode_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  4000" for instance <write_active_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <write_strobe_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0100" for instance <read_active_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <read_strobe_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[0].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[0].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[1].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[1].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[2].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[2].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[3].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[3].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[4].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[4].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[5].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[5].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[6].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[6].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[7].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[7].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[8].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[8].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  00000000" for instance <stack_ram_loop[9].stack_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_ram_loop[9].stack_flop> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_count_loop[0].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  6555" for instance <stack_count_loop[0].lsb_stack_count.count_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_count_loop[1].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  A999" for instance <stack_count_loop[1].mid_stack_count.count_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_count_loop[2].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  A999" for instance <stack_count_loop[2].mid_stack_count.count_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_count_loop[3].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  A999" for instance <stack_count_loop[3].mid_stack_count.count_lut> in unit <kcpsm3>.
+    Set user-defined property "INIT =  0" for instance <stack_count_loop[4].register_bit> in unit <kcpsm3>.
+    Set user-defined property "INIT =  A999" for instance <stack_count_loop[4].msb_stack_count.count_lut> in unit <kcpsm3>.
+Entity <kcpsm3> analyzed. Unit <kcpsm3> generated.
+
+Analyzing Entity <programm> in library <work> (Architecture <low_level_definition>).
+    Set user-defined property "INIT =  000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_00 =  00000208926A62DDD2660B7676664099260260909992277776835A0A03C00000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_06 =  00000000000000000000000000000000000000000000000000000000000003FF" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_07 =  C000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_00 =  A10441004000400CC0010C00090008000B080A100510040807000600A300A200" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_01 =  460050374602A000C000E00240005C1CA2008301A000C000D010A002010E010E" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_02 =  B400C401A0008601B40040004001A0000A10B400CA0150424603502E46015029" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_03 =  0408B400C401080CD80040010510B400C501A00008000602B400400040010408" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_04 =  485B5C564861B8004830BC00487BB4004001400105100600B400C501A0008601" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_05 =  506947010A10B400CA01B4004C01A0000C011980A0005856483A5C564841BC00" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_06 =  A00087010B08B400CB01090CC901A0008701C001A000A0005070470250654700" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_07 =  00000000000000000000000000000000000000000000A0000C000700C1010101" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_0B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_0C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_0D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_0E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_0F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_10 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_11 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_12 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_13 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_14 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_15 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_16 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_17 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_18 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_19 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_1A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_1B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_1C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_1D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_1E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_1F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_22 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_26 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_27 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_2A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_2B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_2C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000080010016000D001D0059" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_35 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_3F =  4300000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "SRVAL =  000000000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "WRITE_MODE =  WRITE_FIRST" for instance <ram_1024_x_18> in unit <programm>.
+Entity <programm> analyzed. Unit <programm> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <timer>.
+    Related source file is "C:/Users/user/HSCD/Uebung/timer.vhd".
+    Found 1-bit register for signal <irq>.
+    Found 25-bit register for signal <acc>.
+    Found 25-bit adder for signal <acc$add0000> created at line 42.
+    Summary:
+	inferred  26 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <timer> synthesized.
+
+
+Synthesizing Unit <FDSx2>.
+    Related source file is "C:/Users/user/HSCD/Uebung/FDSx2.vhd".
+Unit <FDSx2> synthesized.
+
+
+Synthesizing Unit <kcpsm3>.
+    Related source file is "C:/Users/user/HSCD/Uebung/kcpsm3.vhd".
+WARNING:Xst:1780 - Signal <reset_delay> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+Unit <kcpsm3> synthesized.
+
+
+Synthesizing Unit <programm>.
+    Related source file is "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD".
+Unit <programm> synthesized.
+
+
+Synthesizing Unit <system>.
+    Related source file is "C:/Users/user/HSCD/Uebung/Aufgabe2/system.vhd".
+WARNING:Xst:646 - Signal <read_strobe> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <port_id<7:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <enable<8:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <dob> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 16x9-bit ROM for signal <enable>.
+    Found 11-bit register for signal <addra>.
+    Summary:
+	inferred   1 ROM(s).
+	inferred  11 D-type flip-flop(s).
+Unit <system> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x9-bit ROM                                          : 1
+# Adders/Subtractors                                   : 1
+ 25-bit adder                                          : 1
+# Registers                                            : 13
+ 1-bit register                                        : 12
+ 25-bit register                                       : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x9-bit ROM                                          : 1
+# Adders/Subtractors                                   : 1
+ 25-bit adder                                          : 1
+# Registers                                            : 120
+ Flip-Flops                                            : 120
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:2677 - Node <acc_0> of sequential type is unconnected in block <timer>.
+WARNING:Xst:2677 - Node <acc_1> of sequential type is unconnected in block <timer>.
+INFO:Xst:1901 - Instance ram in unit ram of type RAMB16_S9_S9 has been replaced by RAMB16
+INFO:Xst:1901 - Instance rom/ram_1024_x_18 in unit rom/ram_1024_x_18 of type RAMB16_S18 has been replaced by RAMB16
+
+Optimizing unit <system> ...
+
+Optimizing unit <timer> ...
+
+Optimizing unit <kcpsm3> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block system, actual ratio is 6.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 118
+ Flip-Flops                                            : 118
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : system.ngr
+Top Level Output File Name         : system
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 9
+
+Cell Usage :
+# BELS                             : 297
+#      GND                         : 3
+#      INV                         : 12
+#      LUT1                        : 17
+#      LUT2                        : 8
+#      LUT2_L                      : 1
+#      LUT3                        : 74
+#      LUT3_D                      : 1
+#      LUT4                        : 47
+#      LUT4_D                      : 1
+#      LUT4_L                      : 2
+#      MUXCY                       : 61
+#      MUXF5                       : 10
+#      VCC                         : 1
+#      XORCY                       : 59
+# FlipFlops/Latches                : 118
+#      FD                          : 24
+#      FDC                         : 23
+#      FDCE                        : 12
+#      FDE                         : 2
+#      FDR                         : 30
+#      FDRE                        : 8
+#      FDRSE                       : 10
+#      FDS                         : 6
+#      FDSE                        : 3
+# RAMS                             : 28
+#      RAM16X1D                    : 8
+#      RAM32X1S                    : 10
+#      RAM64X1S                    : 8
+#      RAMB16                      : 2
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 8
+#      IBUF                        : 3
+#      OBUF                        : 5
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s200ft256-5 
+
+ Number of Slices:                      131  out of   1920     6%  
+ Number of Slice Flip Flops:            118  out of   3840     3%  
+ Number of 4 input LUTs:                231  out of   3840     6%  
+    Number used as logic:               163
+    Number used as RAMs:                 68
+ Number of IOs:                           9
+ Number of bonded IOBs:                   9  out of    173     5%  
+ Number of BRAMs:                         2  out of     12    16%  
+ Number of GCLKs:                         1  out of      8    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 146   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset(sync_rst/ff2:Q)              | NONE(t1/acc_10)        | 24    |
+rst                                | IBUF                   | 11    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 11.591ns (Maximum Frequency: 86.274MHz)
+   Minimum input arrival time before clock: 2.602ns
+   Maximum output required time after clock: 6.280ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 11.591ns (frequency: 86.274MHz)
+  Total number of paths / destination ports: 1655 / 369
+-------------------------------------------------------------------------
+Delay:               11.591ns (Levels of Logic = 11)
+  Source:            cpu/reg_loop[1].register_bit (RAM)
+  Destination:       cpu/zero_flag_flop (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: cpu/reg_loop[1].register_bit to cpu/zero_flag_flop
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAM16X1D:WCLK->DPO    1   1.552   0.740  cpu/reg_loop[1].register_bit (cpu/sy<1>)
+     LUT3:I2->O           79   0.479   1.863  cpu/reg_loop[1].operand_select_mux (port_id<1>)
+     LUT4:I2->O            1   0.479   0.851  in_port<1>22 (in_port<1>22)
+     LUT2_L:I1->LO         1   0.479   0.123  in_port<1>4_SW1 (N15)
+     LUT4:I3->O            1   0.479   0.851  in_port<1>38 (in_port<1>)
+     LUT3:I1->O            1   0.479   0.000  cpu/alu_mux_loop[1].mux_lut (cpu/input_group<1>)
+     MUXF5:I1->O           2   0.314   0.915  cpu/alu_mux_loop[1].shift_in_muxf5 (cpu/alu_result<1>)
+     LUT4:I1->O            1   0.479   0.000  cpu/low_zero_lut (cpu/low_zero)
+     MUXCY:S->O            1   0.435   0.000  cpu/low_zero_muxcy (cpu/low_zero_carry)
+     MUXCY:CI->O           1   0.056   0.000  cpu/high_zero_cymux (cpu/high_zero_carry)
+     MUXCY:CI->O           0   0.056   0.000  cpu/zero_cymux (cpu/zero_carry)
+     XORCY:CI->O           1   0.786   0.000  cpu/zero_xor (cpu/zero_fast_route)
+     FDRE:D                    0.176          cpu/zero_flag_flop
+    ----------------------------------------
+    Total                     11.591ns (6.248ns logic, 5.343ns route)
+                                       (53.9% logic, 46.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              2.602ns (Levels of Logic = 1)
+  Source:            rst (PAD)
+  Destination:       sync_rst/ff2 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rst to sync_rst/ff2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            13   0.715   0.994  rst_IBUF (rst_IBUF)
+     FDS:S                     0.892          sync_rst/ff1
+    ----------------------------------------
+    Total                      2.602ns (1.607ns logic, 0.994ns route)
+                                       (61.8% logic, 38.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              6.280ns (Levels of Logic = 1)
+  Source:            t1/irq (FF)
+  Destination:       evn1 (PAD)
+  Source Clock:      clk rising
+
+  Data Path: t1/irq to evn1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             2   0.626   0.745  t1/irq (t1/irq)
+     OBUF:I->O                 4.909          evn1_OBUF (evn1)
+    ----------------------------------------
+    Total                      6.280ns (5.535ns logic, 0.745ns route)
+                                       (88.1% logic, 11.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.66 secs
+ 
+--> 
+
+Total memory usage is 280608 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  119 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

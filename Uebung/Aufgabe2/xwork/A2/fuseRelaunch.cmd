@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "C:/Users/user/HSCD/Uebung/Aufgabe2/xwork/A2/system_tb_isim_beh.exe" -prj "C:/Users/user/HSCD/Uebung/Aufgabe2/xwork/A2/system_tb_beh.prj" "work.system_tb" 

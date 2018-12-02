@@ -15,7 +15,7 @@
 //Command: kcpsm3 programm.psm
 //Device: Spartan-3, Spartan-3E, Virtex-II, and Virtex-II Pro FPGAs
 //Design Name: programm
-//Generated 02Dec2018-11:47:15.
+//Generated 02Dec2018-11:48:51.
 //Purpose:
 // programm verilog program definition.
 //

@@ -1,0 +1,5 @@
+vhdl work "../../../timer.vhd"
+vhdl work "../../../kcpsm3.vhd"
+vhdl work "../../../FDSx2.vhd"
+vhdl work "../../software/PROGRAMM.VHD"
+vhdl work "../../system.vhd"
