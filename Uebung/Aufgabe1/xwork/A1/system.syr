@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: system.prj
 
@@ -475,7 +475,7 @@ Entity <kcpsm3> analyzed. Unit <kcpsm3> generated.
 
 Analyzing Entity <programm> in library <work> (Architecture <low_level_definition>).
     Set user-defined property "INIT =  000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INITP_00 =  02082649A26609B776620E7667664099260261D09992277776835A0A03C00000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_00 =  0002082649A26609B77660E7667664099A809824A992277776835A0A03C00000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -484,13 +484,13 @@ Analyzing Entity <programm> in library <work> (Architecture <low_level_definitio
     Set user-defined property "INITP_06 =  00000000000000000000000000000000000000000000000000000000000003FF" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_07 =  C000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_00 =  A10441004000400CC0010C00090008000B080A100510040807000600A300A200" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_01 =  460050374602A000C000E00240005C1CA2008301A000C000D010A002010E010E" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_02 =  B400C401A0008601B40040004001A0000A10B400CA0150424603502E46015029" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_03 =  0408B400C401080CD80040010510B400C501A000080086015459400040010408" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_04 =  4841BC00487B5856483AB8004830B4004001400105100600B400C501A0008601" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_05 =  4700506B4701B4004C01A0000600A0000C0119804056B80048615856485BB800" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_06 =  090CC9010A10B400CA01A0008701C001A0000A10B400CA01A000507547025064" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_07 =  000000000000A0000C000700C10101010A10B400CA01A00087010B08B400CB01" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_01 =  460050364602A000C000E00240005C1CA2008301A000C000D010A002010E010E" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_02 =  BC00040CA0008601B40040004001A0000A10B400CA0150404603502E46015029" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_03 =  A0008601BC00040C080CD80040010510B400C501A00008000602B40040004001" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_04 =  485BB8004841BC00487B5854483AB8004830B4004001400105100600B400C501" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_05 =  A000507147025060470050674701B4004C01A0000C0119804054B80048615854" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_06 =  87010B08B400CB01090CC9010A10B400CA01A0008701C001A0000A10B400CA01" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000A0000C000700C10101010A10B400CA01A000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -531,7 +531,7 @@ Analyzing Entity <programm> in library <work> (Architecture <low_level_definitio
     Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000080010016000D001D005B" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000080010016000D001D0057" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -847,12 +847,12 @@ Offset:              6.280ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.17 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.90 secs
  
 --> 
 
-Total memory usage is 279776 kilobytes
+Total memory usage is 279584 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  119 (   0 filtered)
