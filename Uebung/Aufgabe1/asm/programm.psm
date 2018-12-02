@@ -1,0 +1,274 @@
+
+        CONSTANT IO_Port,  00
+        CONSTANT LED0,     01
+        CONSTANT LED1,     02
+        CONSTANT BNT0,     04
+        
+        CONSTANT COM_Port, 01
+        CONSTANT TXD,      01
+        CONSTANT RXD,      01
+		
+		CONSTANT MIN_NUM,  30
+		CONSTANT MAX_NUM,  3A
+		CONSTANT MIN_BA,   41
+		CONSTANT MAX_BA,   5B
+		CONSTANT MIN_SA,   61
+		CONSTANT MAX_SA,   7B
+
+; Register Mapping
+; alle acht Register s0 bis sF stehen der ISR zur Verfuegung
+        NAMEREG s0, IOR
+        NAMEREG s1, TMP
+        NAMEREG s2, CNTH
+        NAMEREG s3, CNTL
+		NAMEREG s4, MOD8
+		NAMEREG s5, MOD16
+		NAMEREG s6, IN_STATE
+		NAMEREG s7, OUT_STATE
+		NAMEREG s8, DATA_BUFFER
+		NAMEREG s9, WRITE_BUFFER
+		NAMEREG sA,	MOD16_W
+		NAMEREG sB,	MOD8_W
+		NAMEREG sD,	ONE_OUT
+
+; --------------------------------------------------------------------------------------------
+
+        ADDRESS 000
+; Hauptfunktion
+start:  AND    	CNTH, 00   	; Initialisierung des Zaehlers ...
+        AND    	CNTL, 00   	; in der ISR
+		AND	   	IN_STATE,  00
+		LOAD	OUT_STATE, 05
+		LOAD   	MOD8, 08		; Initialisierung des modulo 8 Zaehlers
+		LOAD   	MOD16, 10	; Initialisierung des modulo 8 Zaehlers
+		LOAD   	MOD16_W, 10
+		LOAD   	MOD8_W,	08
+		AND   	DATA_BUFFER, 00
+		AND		WRITE_BUFFER, 00
+		LOAD	ONE_OUT, 01
+		
+        ENABLE INTERRUPT
+loop:   ; do nothing
+        JUMP loop
+
+; --------------------------------------------------------------------------------------------
+ 
+; Subroutine, die den Zustand des Buttons BTN0 auf die Leuchtdiode LED0 durchschaltet
+BNT0LED0:
+        INPUT  IOR,  IO_Port ; IO-Port einlesen
+        INPUT  TMP,  IO_Port ; IO-Port einlesen
+        AND    TMP,  BNT0    ; Zustand von BNT0 ermitteln
+        SR0    TMP           ; auf die Position ...
+        SR0    TMP           ; ... von LED0 verschieben
+        AND    IOR,  LED1    ; Zustand von LED1 ermitteln
+        OR     IOR,  TMP     ; LED1 mit BNT0 konkatinieren
+        OUTPUT IOR,  IO_Port ; den neuen Wert ueber IO-Port ausgeben 
+        RETURN
+
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die die Leuchtdione LED1 mit ca. 1 Hz blinken laesst
+BLINK:  ADD    CNTL, 01      ; den 16-Bit-Zaehler ... 
+        ADDCY  CNTH, 00      ; .. inkrementieren
+        JUMP   NC,   BLINK0  ; kein Ueberlauf -> exit, sonst
+        INPUT  IOR,  IO_Port ; IO-Port einlesen
+        XOR    IOR,  LED1    ; LED1 toggeln
+        OUTPUT IOR,  IO_Port ; den neuen Wert ueber IO-Port ausgeben 
+BLINK0: RETURN
+
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die Daten ueber das serielle Eingangssignal RXD abtastet,
+; zu einem Byte zusammensetzt, entscheidet, ob das empfangene Byte
+; ein Buchstabe oder eine Ziffer ist, und ggf. das Byte seriell
+; ueber das serielle Ausgangssignal TXD ausgibt
+;
+; in dieser Version ist eine einfache Echo-Funktion implementiert
+COMM_IN:   
+        INPUT  	IOR,  	COM_Port ; COM_Port einlesen
+;       AND    	IOR,  	RXD      ; Zustand von RXD ermitteln
+
+
+		COMPARE IN_STATE, 	02
+		JUMP 	Z, 			RECDATA
+		
+		COMPARE IN_STATE, 	00
+		JUMP	Z,			FALLINGFLANK
+
+		COMPARE	IN_STATE,	01
+		JUMP   	Z, 			STARTBIT
+
+		COMPARE IN_STATE, 	03
+		JUMP 	Z, 			STOPPBIT
+		
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	MOD16_W,		10
+
+        RETURN
+		; idle, fallende flanke, start bit erkannt wenn nicht abbrechen, daten, stoppbit 
+		; mod 16 für daten
+		; mod 8 für immer
+
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die überprüft ob die fallende Flanke nur eine Leitungsstörung
+; war, oder ob es sich wirklich um das Startbit handelt.
+; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
+FALLINGFLANK:
+		COMPARE IOR, 		00
+		RETURN	NZ
+		ADD		IN_STATE,	01
+		RETURN
+
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die überprüft ob die fallende Flanke nur eine Leitungsstörung
+; war, oder ob es sich wirklich um das Startbit handelt.
+; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
+STARTBIT:
+		SUB 	MOD8, 			01
+		RETURN 	NZ
+		LOAD	MOD8, 			08
+		COMPARE IOR, 			00
+		JUMP 	NZ,				RESET
+		ADD 	IN_STATE, 		01
+		LOAD	DATA_BUFFER,	00
+		RETURN
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die 
+RECDATA:
+		SUB		MOD16, 			01
+		RETURN	NZ
+		LOAD	MOD16,			10
+		OR		DATA_BUFFER, 	IOR
+		RR		DATA_BUFFER
+		SUB		MOD8, 			01
+		RETURN	NZ
+		ADD		IN_STATE, 		01
+		LOAD	MOD8,			08
+		RETURN
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, 
+STOPPBIT:
+		SUB		MOD16, 			01
+		RETURN	NZ
+		LOAD	IN_STATE,		00
+		LOAD	MOD16,			10
+		COMPARE IOR, 			01
+		RETURN  NZ
+		
+		COMPARE DATA_BUFFER,	MAX_SA
+		RETURN	NC
+		
+		COMPARE	DATA_BUFFER,	MIN_NUM
+		RETURN	C 
+		
+		COMPARE DATA_BUFFER,	MAX_NUM
+		JUMP	C,				WRITE_ENABLE
+		
+		COMPARE DATA_BUFFER,	MIN_BA
+		RETURN	C
+		
+		COMPARE DATA_BUFFER,	MAX_BA
+		JUMP	C,				WRITE_ENABLE
+		
+		COMPARE DATA_BUFFER,	MIN_SA
+		RETURN	C 
+		
+		COMPARE DATA_BUFFER,	MAX_SA
+		JUMP	C,				WRITE_ENABLE
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die 
+WRITE_ENABLE:
+		LOAD	WRITE_BUFFER,	DATA_BUFFER
+		LOAD	OUT_STATE,		00
+		
+		RETURN
+		
+; --------------------------------------------------------------------------------------------
+
+RESET:
+		LOAD IN_STATE,	00
+		RETURN
+
+; --------------------------------------------------------------------------------------------
+        
+; Subroutine, die
+COMM_OUT:			
+		COMPARE	OUT_STATE,		00
+		JUMP	Z,				W_STARTBIT
+		
+		COMPARE	OUT_STATE,		01
+		JUMP	Z,				W_DATA
+		
+		COMPARE	OUT_STATE,		02
+		JUMP	Z,				W_STOPPBIT
+		
+		OUTPUT	ONE_OUT,		COM_Port
+		RETURN
+		
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die
+W_STARTBIT:
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	MOD16_W,		10
+		
+		AND		IOR,			00
+		OUTPUT 	IOR,  			COM_Port
+		
+		ADD		OUT_STATE,		01
+		LOAD	MOD8_W,			08
+		RETURN
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die
+W_DATA:
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	MOD16_W,		10
+		
+		OUTPUT	WRITE_BUFFER,	COM_Port
+		RR		WRITE_BUFFER
+		
+		SUB		MOD8_W,			01
+		RETURN	NZ
+		
+		ADD		OUT_STATE,		01
+		
+		RETURN
+; --------------------------------------------------------------------------------------------
+
+; Subroutine, die
+W_STOPPBIT:
+		SUB		MOD16_W,		01
+		RETURN	NZ
+		LOAD	MOD16_W,		10
+		
+		OUTPUT	ONE_OUT,		COM_Port
+		
+		ADD	OUT_STATE,		01
+		
+		RETURN
+; --------------------------------------------------------------------------------------------
+        ADDRESS 300
+; Interrupt-Service-Routine
+ISR:	CALL	COMM_OUT
+		CALL    COMM_IN
+		CALL    BNT0LED0
+        CALL    BLINK
+        RETURNI ENABLE
+
+; --------------------------------------------------------------------------------------------
+
+; Interrupt-Vektor
+        ADDRESS 3FF
+        JUMP ISR

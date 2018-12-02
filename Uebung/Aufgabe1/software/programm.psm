@@ -29,7 +29,7 @@
 		NAMEREG s9, WRITE_BUFFER
 		NAMEREG sA,	MOD16_W
 		NAMEREG sB,	MOD8_W
-		NAMEREG sD,	ONE_OUT
+		NAMEREG sC, WRITE_ENABLE
 
 ; --------------------------------------------------------------------------------------------
 
@@ -37,15 +37,15 @@
 ; Hauptfunktion
 start:  AND    	CNTH, 00   	; Initialisierung des Zaehlers ...
         AND    	CNTL, 00   	; in der ISR
-		AND	   	IN_STATE,  00
-		LOAD	OUT_STATE, 05
+		LOAD	IN_STATE,  00
+		LOAD	OUT_STATE, 00
 		LOAD   	MOD8, 08		; Initialisierung des modulo 8 Zaehlers
 		LOAD   	MOD16, 10	; Initialisierung des modulo 8 Zaehlers
 		LOAD   	MOD16_W, 10
 		LOAD   	MOD8_W,	08
-		AND   	DATA_BUFFER, 00
-		AND		WRITE_BUFFER, 00
-		LOAD	ONE_OUT, 01
+		LOAD   	DATA_BUFFER, 00
+		LOAD	WRITE_BUFFER, 00
+		LOAD	WRITE_ENABLE, 00
 		
         ENABLE INTERRUPT
 loop:   ; do nothing
@@ -162,33 +162,32 @@ STOPPBIT:
 		COMPARE IOR, 			01
 		RETURN  NZ
 		
-		COMPARE DATA_BUFFER,	MAX_SA
-		RETURN	NC
-		
 		COMPARE	DATA_BUFFER,	MIN_NUM
 		RETURN	C 
 		
 		COMPARE DATA_BUFFER,	MAX_NUM
-		JUMP	C,				WRITE_ENABLE
+		JUMP	C,				WRITE
+		
+		COMPARE DATA_BUFFER,	MAX_SA
+		RETURN	NC		
 		
 		COMPARE DATA_BUFFER,	MIN_BA
 		RETURN	C
 		
 		COMPARE DATA_BUFFER,	MAX_BA
-		JUMP	C,				WRITE_ENABLE
+		JUMP	C,				WRITE
 		
 		COMPARE DATA_BUFFER,	MIN_SA
 		RETURN	C 
 		
-		COMPARE DATA_BUFFER,	MAX_SA
-		JUMP	C,				WRITE_ENABLE
+		JUMP	WRITE
 		
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die 
-WRITE_ENABLE:
+WRITE:
 		LOAD	WRITE_BUFFER,	DATA_BUFFER
-		LOAD	OUT_STATE,		00
+		LOAD	WRITE_ENABLE,	01
 		
 		RETURN
 		
@@ -201,17 +200,19 @@ RESET:
 ; --------------------------------------------------------------------------------------------
         
 ; Subroutine, die
-COMM_OUT:			
-		COMPARE	OUT_STATE,		00
-		JUMP	Z,				W_STARTBIT
+COMM_OUT:		
+		COMPARE	WRITE_ENABLE,	01
+		RETURN	NZ
 		
 		COMPARE	OUT_STATE,		01
 		JUMP	Z,				W_DATA
 		
+		COMPARE	OUT_STATE,		00
+		JUMP	Z,				W_STARTBIT
+		
 		COMPARE	OUT_STATE,		02
 		JUMP	Z,				W_STOPPBIT
 		
-		OUTPUT	ONE_OUT,		COM_Port
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
@@ -253,9 +254,11 @@ W_STOPPBIT:
 		RETURN	NZ
 		LOAD	MOD16_W,		10
 		
-		OUTPUT	ONE_OUT,		COM_Port
+		LOAD	TMP,		01
+		OUTPUT	TMP,		COM_Port
 		
-		ADD	OUT_STATE,		01
+		LOAD	OUT_STATE,		00
+		LOAD	WRITE_ENABLE,	00
 		
 		RETURN
 ; --------------------------------------------------------------------------------------------

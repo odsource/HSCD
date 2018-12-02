@@ -1,8 +1,8 @@
 INTSTYLE=impact
 INFILE=C:\Users\user\HSCD\Uebung\Aufgabe1\A1\impact.xsl
 OUTFILE=C:\Users\user\HSCD\Uebung\Aufgabe1\A1\impact.xsl
-FAMILY=None
-PART=None
+FAMILY=Multiple
+PART=Multiple
 WORKINGDIR=C:\Users\user\HSCD\Uebung\Aufgabe1\A1
 LICENSE=iMPACT
 USER_INFO=iMPACT
