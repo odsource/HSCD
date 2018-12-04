@@ -44,9 +44,9 @@ Setup/Hold to clock clk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-btn0        |    0.942(R)|    0.521(R)|clk_BUFGP         |   0.000|
-rst         |    2.192(R)|   -0.177(R)|clk_BUFGP         |   0.000|
-rxd         |    0.780(R)|    0.651(R)|clk_BUFGP         |   0.000|
+btn0        |    0.756(R)|    0.670(R)|clk_BUFGP         |   0.000|
+rst         |    3.021(R)|   -0.258(R)|clk_BUFGP         |   0.000|
+rxd         |    0.820(R)|    0.619(R)|clk_BUFGP         |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clk to Pad
@@ -54,11 +54,11 @@ Clock clk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-evn1        |    8.162(R)|clk_BUFGP         |   0.000|
-evn2        |   11.482(R)|clk_BUFGP         |   0.000|
-led0        |    7.955(R)|clk_BUFGP         |   0.000|
-led1        |    8.372(R)|clk_BUFGP         |   0.000|
-txd         |    8.318(R)|clk_BUFGP         |   0.000|
+evn1        |    9.376(R)|clk_BUFGP         |   0.000|
+evn2        |   11.960(R)|clk_BUFGP         |   0.000|
+led0        |    8.305(R)|clk_BUFGP         |   0.000|
+led1        |    8.350(R)|clk_BUFGP         |   0.000|
+txd         |    8.654(R)|clk_BUFGP         |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk
@@ -66,18 +66,18 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |   10.660|         |         |         |
+clk            |   10.668|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Sun Dec 02 16:45:26 2018 
+Analysis completed Tue Dec 04 02:02:54 2018 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 161 MB
+Peak Memory Usage: 162 MB
 
 
 

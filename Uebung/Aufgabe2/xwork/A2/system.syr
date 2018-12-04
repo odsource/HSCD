@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: system.prj
 
@@ -68,7 +68,7 @@ Automatic Register Balancing       : No
 
 ---- Target Options
 Add IO Buffers                     : YES
-Global Maximum Fanout              : 500
+Global Maximum Fanout              : 100000
 Add Generic Clock Buffer(BUFG)     : 8
 Register Duplication               : YES
 Slice Packing                      : YES
@@ -105,20 +105,16 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/FDSx2.vhd" in Library work.
-Entity <FDSx2> compiled.
-Entity <FDSx2> (Architecture <structure>) compiled.
+Architecture structure of Entity fdsx2 is up to date.
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/timer.vhd" in Library work.
-Entity <timer> compiled.
-Entity <timer> (Architecture <behaviour>) compiled.
+Architecture behaviour of Entity timer is up to date.
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/kcpsm3.vhd" in Library work.
-Entity <kcpsm3> compiled.
-Entity <kcpsm3> (Architecture <low_level_definition>) compiled.
+Architecture low_level_definition of Entity kcpsm3 is up to date.
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/Aufgabe2/software/PROGRAMM.VHD" in Library work.
 Entity <programm> compiled.
 Entity <programm> (Architecture <low_level_definition>) compiled.
 Compiling vhdl file "C:/Users/user/HSCD/Uebung/Aufgabe2/system.vhd" in Library work.
-Entity <system> compiled.
-Entity <system> (Architecture <structure>) compiled.
+Architecture structure of Entity system is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -558,22 +554,22 @@ Entity <kcpsm3> analyzed. Unit <kcpsm3> generated.
 
 Analyzing Entity <programm> in library <work> (Architecture <low_level_definition>).
     Set user-defined property "INIT =  000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INITP_00 =  00000208926A62DDD2660B7676664099260260909992277776835A0A03C00000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_00 =  8090A6268981829B7760266DDDDDD9098260260909824DDDDDA0D68280F00000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INITP_06 =  00000000000000000000000000000000000000000000000000000000000003FF" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INITP_06 =  00000000000000000000000000000000000000000000000000000000000000FF" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INITP_07 =  C000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_00 =  A10441004000400CC0010C00090008000B080A100510040807000600A300A200" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_01 =  460050374602A000C000E00240005C1CA2008301A000C000D010A002010E010E" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_02 =  B400C401A0008601B40040004001A0000A10B400CA0150424603502E46015029" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_03 =  0408B400C401080CD80040010510B400C501A00008000602B400400040010408" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_04 =  485B5C564861B8004830BC00487BB4004001400105100600B400C501A0008601" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_05 =  506947010A10B400CA01B4004C01A0000C011980A0005856483A5C564841BC00" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_06 =  A00087010B08B400CB01090CC901A0008701C001A000A0005070470250654700" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_07 =  00000000000000000000000000000000000000000000A0000C000700C1010101" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_00 =  010EA10441004000400BC00109100D010C000B000A00070008080500A300A200" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_01 =  50354502545B4700A000C000E00240005C1BA2008301A000C000D010A002010E" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_02 =  40010410B400C401A00004070501B4004000400150404503502C450150264500" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_03 =  A00005030808B400C801060CD60040010410B400C401A00006000502B4004000" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_04 =  5C55465B5C5246615C55467B5852463A58554630B400400140010500B400C401" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_05 =  450750624505506C4506A000041005050701B400C901C6048B01CB025C524641" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_06 =  C6010410B400C401A000050646048A01CA0208080410CC01B400C401A0005075" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_07 =  A000091005000700B4005AB005050410CD01B400C401A0000507B400C801060C" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -614,7 +610,7 @@ Analyzing Entity <programm> in library <work> (Architecture <low_level_definitio
     Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
-    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000080010016000D001D0059" for instance <ram_1024_x_18> in unit <programm>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000008001001C0015000C" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
     Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <ram_1024_x_18> in unit <programm>.
@@ -940,11 +936,11 @@ Offset:              6.280ns (Levels of Logic = 1)
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.66 secs
+Total CPU time to Xst completion: 8.60 secs
  
 --> 
 
-Total memory usage is 280608 kilobytes
+Total memory usage is 280928 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  119 (   0 filtered)

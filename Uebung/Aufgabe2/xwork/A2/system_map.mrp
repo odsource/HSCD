@@ -9,7 +9,7 @@ Target Device  : xc3s200
 Target Package : ft256
 Target Speed   : -5
 Mapper Version : spartan3 -- $Revision: 1.55 $
-Mapped Date    : Sun Dec 02 16:45:12 2018
+Mapped Date    : Tue Dec 04 02:02:42 2018
 
 Design Summary
 --------------
@@ -129,15 +129,15 @@ Section 6 - IOB Properties
 | IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| btn0                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| clk                                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| evn1                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| evn2                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| led0                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| led1                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| rst                                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| rxd                                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| txd                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| btn0                               | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| clk                                | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| evn1                               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| evn2                               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| led0                               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| led1                               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| rst                                | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| rxd                                | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| txd                                | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Section 7 - RPMs

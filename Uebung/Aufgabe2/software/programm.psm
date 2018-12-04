@@ -1,19 +1,22 @@
 
-        CONSTANT IO_Port,  00
-        CONSTANT LED0,     01
-        CONSTANT LED1,     02
-        CONSTANT BNT0,     04
+        CONSTANT IO_Port,		00
+        CONSTANT LED0,     		01
+        CONSTANT LED1,     		02
+        CONSTANT BNT0,     		04
         
-        CONSTANT COM_Port, 01
-        CONSTANT TXD,      01
-        CONSTANT RXD,      01
+        CONSTANT COM_Port, 		01
+        CONSTANT TXD,      		01
+        CONSTANT RXD,      		01
 		
-		CONSTANT MIN_NUM,  30
-		CONSTANT MAX_NUM,  3A
-		CONSTANT MIN_BA,   41
-		CONSTANT MAX_BA,   5B
-		CONSTANT MIN_SA,   61
-		CONSTANT MAX_SA,   7B
+		CONSTANT MIN_NUM,  		30
+		CONSTANT MAX_NUM,  		3A
+		CONSTANT MIN_BA,   		41
+		CONSTANT MAX_BA,   		5B
+		CONSTANT MIN_SA,   		61
+		CONSTANT MAX_SA,   		7B
+		
+		CONSTANT RAM_POINTER,  	02
+		CONSTANT RAM, 			04
 
 ; Register Mapping
 ; alle acht Register s0 bis sF stehen der ISR zur Verfuegung
@@ -21,31 +24,37 @@
         NAMEREG s1, TMP
         NAMEREG s2, CNTH
         NAMEREG s3, CNTL
-		NAMEREG s4, MOD8
-		NAMEREG s5, MOD16
-		NAMEREG s6, IN_STATE
-		NAMEREG s7, OUT_STATE
-		NAMEREG s8, DATA_BUFFER
-		NAMEREG s9, WRITE_BUFFER
-		NAMEREG sA,	MOD16_W
-		NAMEREG sB,	MOD8_W
-		NAMEREG sC, WRITE_ENABLE
+		
+		NAMEREG s4, COUNTER
+		NAMEREG s5, STATE
+		
+		NAMEREG s6, DATA_BUFFER
+		NAMEREG s7, WRITE_ENABLE
+		NAMEREG s8, DATA_COUNTER
+		NAMEREG s9, RECV_DATA_CNT
+		
+		NAMEREG sA, WRITE_ADRESS			
+		NAMEREG sB, READ_ADRESS           
+		NAMEREG sC, START
+		NAMEREG SD, STOP
 
 ; --------------------------------------------------------------------------------------------
 
         ADDRESS 000
 ; Hauptfunktion
-start:  AND    	CNTH, 00   	; Initialisierung des Zaehlers ...
-        AND    	CNTL, 00   	; in der ISR
-		LOAD	IN_STATE,  00
-		LOAD	OUT_STATE, 00
-		LOAD   	MOD8, 08		; Initialisierung des modulo 8 Zaehlers
-		LOAD   	MOD16, 10	; Initialisierung des modulo 8 Zaehlers
-		LOAD   	MOD16_W, 10
-		LOAD   	MOD8_W,	08
-		LOAD   	DATA_BUFFER, 00
-		LOAD	WRITE_BUFFER, 00
-		LOAD	WRITE_ENABLE, 00
+start:  AND    	CNTH, 			00   	; Initialisierung des Zaehlers ...
+        AND    	CNTL, 			00   	; in der ISR
+		
+		LOAD	STATE,  		00
+		LOAD	DATA_COUNTER, 	08
+		LOAD	WRITE_ENABLE, 	00
+		
+		LOAD   	WRITE_ADRESS, 	00 
+		LOAD   	READ_ADRESS, 	00 
+		LOAD   	START, 			00
+		LOAD   	STOP, 			01
+		LOAD 	RECV_DATA_CNT, 	10
+		
 		
         ENABLE INTERRUPT
 loop:   ; do nothing
@@ -85,23 +94,21 @@ BLINK0: RETURN
 ;
 ; in dieser Version ist eine einfache Echo-Funktion implementiert
 COMM_IN:   
-		COMPARE IN_STATE, 	02
-		JUMP 	Z, 			RECDATA
+		COMPARE WRITE_ENABLE, 	00
+		JUMP 	NZ, 			COMM_OUT
+
+		COMPARE STATE, 			02
+		JUMP 	Z, 				RECDATA
 		
-		COMPARE IN_STATE, 	00
-		JUMP	Z,			FALLINGFLANK
+		COMPARE STATE, 			00
+		JUMP	Z,				FALLINGFLANK
 
-		COMPARE	IN_STATE,	01
-		JUMP   	Z, 			STARTBIT
+		COMPARE	STATE,			01
+		JUMP   	Z, 				STARTBIT
 
-		COMPARE IN_STATE, 	03
-		JUMP 	Z, 			STOPPBIT
-		
-		SUB		MOD16_W,		01
-		RETURN	NZ
-		LOAD	MOD16_W,		10
+		COMPARE STATE, 			03
+		JUMP 	Z, 				STOPPBIT
 
-        RETURN
 		; idle, fallende flanke, start bit erkannt wenn nicht abbrechen, daten, stoppbit 
 		; mod 16 für daten
 		; mod 8 für immer
@@ -115,7 +122,8 @@ FALLINGFLANK:
 		INPUT  	IOR,  		COM_Port ; COM_Port einlesen
 		COMPARE IOR, 		00
 		RETURN	NZ
-		ADD		IN_STATE,	01
+		LOAD	STATE,		01
+		LOAD	COUNTER, 	07
 		RETURN
 
 ; --------------------------------------------------------------------------------------------
@@ -124,13 +132,13 @@ FALLINGFLANK:
 ; war, oder ob es sich wirklich um das Startbit handelt.
 ; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
 STARTBIT:
-		SUB		MOD8,			01
+		SUB		COUNTER,		01
 		RETURN 	NZ
-		LOAD	MOD8,			08
+		LOAD	COUNTER,		10
 		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
 		COMPARE IOR, 			00
 		RETURN 	NZ
-		LOAD 	IN_STATE, 		02
+		LOAD 	STATE, 			02
 		LOAD	DATA_BUFFER,	00
 		RETURN
 		
@@ -138,79 +146,84 @@ STARTBIT:
 
 ; Subroutine, die 
 RECDATA:
-		SUB		MOD16, 			01
+		SUB		COUNTER, 		01
 		RETURN	NZ
-		LOAD	MOD16,			10
+		LOAD	COUNTER,		10
+		
 		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
 		OR		DATA_BUFFER, 	IOR
 		RR		DATA_BUFFER
-		SUB		MOD8,			01
+		
+		SUB		DATA_COUNTER,	01
 		RETURN 	NZ
-		LOAD	MOD8,			08
-		ADD		IN_STATE, 		01
+		LOAD	DATA_COUNTER,	08
+		
+		LOAD	STATE, 			03
+		
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, 
 STOPPBIT:
-		SUB		MOD16, 			01
+		SUB		COUNTER, 		01
 		RETURN	NZ
-		LOAD	IN_STATE,		00
-		LOAD	MOD16,			10
+		LOAD 	STATE,			00
 		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
 		COMPARE IOR, 			01
 		RETURN  NZ
 		
-		COMPARE DATA_BUFFER,	MAX_SA	; Hex 7B
-		RETURN	NC	
+		
 		
 		COMPARE	DATA_BUFFER,	MIN_NUM	; Hex 30
-		RETURN	C 
+		JUMP	C,				RESET 
 		
+		COMPARE DATA_BUFFER,	MAX_NUM	; Hex 3A
+		JUMP	C,				WRITE	
+
+		COMPARE DATA_BUFFER,	MAX_SA	; Hex 7B
+		JUMP	NC,				RESET			
 		
 		COMPARE DATA_BUFFER,	MIN_SA	; Hex 61
 		JUMP	NC,				WRITE
 		
 		COMPARE DATA_BUFFER,	MAX_BA	; Hex 5B
-		RETURN	NC
+		JUMP	NC,				RESET
 		
 		COMPARE DATA_BUFFER,	MIN_BA	; Hex 41
 		JUMP	NC,				WRITE
-		
-		COMPARE DATA_BUFFER,	MAX_NUM	; Hex 3A
-		JUMP	C,				WRITE
-		
-		RETURN
 		
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die 
 WRITE:
-		LOAD	WRITE_BUFFER,	DATA_BUFFER
-		LOAD	WRITE_ENABLE,	01
-		
-		RETURN
+		OUTPUT 	READ_ADRESS, 	RAM_POINTER
+		ADD 	READ_ADRESS, 	01
+		OUTPUT 	DATA_BUFFER, 	RAM 
 		
 ; --------------------------------------------------------------------------------------------
-        
+
+RESET:		
+		SUB 	RECV_DATA_CNT, 	01 
+		RETURN 	NZ
+		LOAD 	WRITE_ENABLE, 	01
+		LOAD 	STATE,			05
+		LOAD 	COUNTER, 		10
+		
+		RETURN
+	
+; --------------------------------------------------------------------------------------------
+		
 ; Subroutine, die
-COMM_OUT:		
-		COMPARE	WRITE_ENABLE,	01
-		RETURN	NZ
+COMM_OUT:						
+		COMPARE	STATE,		06
+		JUMP	Z,			W_DATA
 		
-		SUB		MOD16_W,		01
-		RETURN	NZ
-		LOAD	MOD16_W,		10
+		COMPARE STATE,		05
+		JUMP	Z,			W_STARTBIT
 		
-		COMPARE	OUT_STATE,		01
-		JUMP	Z,				W_DATA
-		
-		COMPARE	OUT_STATE,		00
-		JUMP	Z,				W_STARTBIT
-		
-		COMPARE	OUT_STATE,		02
-		JUMP	Z,				W_STOPPBIT
+		COMPARE	STATE,		07
+		JUMP	Z,			W_STOPPBIT
 		
 		RETURN
 		
@@ -218,43 +231,60 @@ COMM_OUT:
 
 ; Subroutine, die
 W_STARTBIT:
-		AND		IOR,			00
-		OUTPUT 	IOR,  			COM_Port
+		SUB 	COUNTER, 		01
+		RETURN 	NZ
+
+		OUTPUT 	START, 			COM_Port
+		LOAD 	COUNTER, 		10
+		LOAD 	DATA_COUNTER, 	08
+		OUTPUT 	WRITE_ADRESS, 	RAM_POINTER
+		ADD 	WRITE_ADRESS, 	01
+		INPUT 	DATA_BUFFER, 	RAM
+		LOAD 	STATE, 			06
 		
-		ADD		OUT_STATE,		01
 		RETURN
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die
 W_DATA:
-		OUTPUT	WRITE_BUFFER,	COM_Port
-		RR		WRITE_BUFFER
+		SUB 	COUNTER, 		01			
+		RETURN 	NZ
+		LOAD 	COUNTER, 		10  
 		
-		SUB		MOD8_W,			01
-		RETURN	NZ
-		LOAD	MOD8_W,			08
-		
-		ADD		OUT_STATE,		01
-		
+		OUTPUT 	DATA_BUFFER, 	COM_Port   
+		RR 		DATA_BUFFER				
+		SUB 	DATA_COUNTER, 	01		
+		RETURN 	NZ
+		LOAD 	STATE, 			07	
+	    
 		RETURN
+				
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die
 W_STOPPBIT:
-		LOAD	TMP,		01
-		OUTPUT	TMP,		COM_Port
+		SUB 	COUNTER, 		01
+		RETURN 	NZ
 		
-		LOAD	OUT_STATE,		00
-		LOAD	WRITE_ENABLE,	00
+		OUTPUT 	STOP, 			COM_Port
+		
+		LOAD 	COUNTER, 		10
+		LOAD 	STATE, 			05
+
+		COMPARE WRITE_ADRESS, 	READ_ADRESS
+		RETURN 	NZ
+		LOAD 	WRITE_ENABLE, 	00
+		LOAD 	DATA_COUNTER, 	08
+		LOAD 	STATE, 			00
+		LOAD 	RECV_DATA_CNT, 	10
 		
 		RETURN
 ; --------------------------------------------------------------------------------------------
         ADDRESS 300
 ; Interrupt-Service-Routine
-ISR:	CALL	COMM_OUT
-		CALL    COMM_IN
-		CALL    BNT0LED0
+ISR:	CALL    BNT0LED0
         CALL    BLINK
+		CALL    COMM_IN
         RETURNI ENABLE
 
 ; --------------------------------------------------------------------------------------------

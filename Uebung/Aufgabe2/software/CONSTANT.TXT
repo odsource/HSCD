@@ -13,3 +13,5 @@ Table of constant values and their specified constant labels.
 5B  MAX_BA
 61  MIN_SA
 7B  MAX_SA
+02  RAM_POINTER
+04  RAM

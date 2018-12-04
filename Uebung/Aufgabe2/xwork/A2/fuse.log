@@ -47,8 +47,8 @@ Compiling architecture ramb16_s9_s9_v of entity RAMB16_S9_S9 [\RAMB16_S9_S9:syst
 Compiling architecture structure of entity system [\system:system_tb:sys:\]
 Compiling architecture behaviour of entity system_tb
 Time Resolution for simulation is 1ps.
-Waiting for 15 sub-compilation(s) to finish...
+Waiting for 27 sub-compilation(s) to finish...
 Compiled 124 VHDL Units
 Built simulation executable C:/Users/user/HSCD/Uebung/Aufgabe2/xwork/A2/system_tb_isim_beh.exe
-Fuse Memory Usage: 67532 KB
-Fuse CPU Usage: 1405 ms
+Fuse Memory Usage: 67468 KB
+Fuse CPU Usage: 1467 ms
