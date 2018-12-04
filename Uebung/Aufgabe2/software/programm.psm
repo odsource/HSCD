@@ -122,8 +122,10 @@ FALLINGFLANK:
 		INPUT  	IOR,  		COM_Port ; COM_Port einlesen
 		COMPARE IOR, 		00
 		RETURN	NZ
+		
 		LOAD	STATE,		01
 		LOAD	COUNTER, 	07
+		
 		RETURN
 
 ; --------------------------------------------------------------------------------------------
@@ -134,12 +136,16 @@ FALLINGFLANK:
 STARTBIT:
 		SUB		COUNTER,		01
 		RETURN 	NZ
+		
 		LOAD	COUNTER,		10
+		
 		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
 		COMPARE IOR, 			00
 		RETURN 	NZ
+		
 		LOAD 	STATE, 			02
 		LOAD	DATA_BUFFER,	00
+		
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
@@ -148,6 +154,7 @@ STARTBIT:
 RECDATA:
 		SUB		COUNTER, 		01
 		RETURN	NZ
+		
 		LOAD	COUNTER,		10
 		
 		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
@@ -156,6 +163,7 @@ RECDATA:
 		
 		SUB		DATA_COUNTER,	01
 		RETURN 	NZ
+		
 		LOAD	DATA_COUNTER,	08
 		
 		LOAD	STATE, 			03
@@ -168,12 +176,11 @@ RECDATA:
 STOPPBIT:
 		SUB		COUNTER, 		01
 		RETURN	NZ
+		
 		LOAD 	STATE,			00
 		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
 		COMPARE IOR, 			01
 		RETURN  NZ
-		
-		
 		
 		COMPARE	DATA_BUFFER,	MIN_NUM	; Hex 30
 		JUMP	C,				RESET 
@@ -206,6 +213,7 @@ WRITE:
 RESET:		
 		SUB 	RECV_DATA_CNT, 	01 
 		RETURN 	NZ
+		
 		LOAD 	WRITE_ENABLE, 	01
 		LOAD 	STATE,			05
 		LOAD 	COUNTER, 		10
@@ -249,12 +257,14 @@ W_STARTBIT:
 W_DATA:
 		SUB 	COUNTER, 		01			
 		RETURN 	NZ
+		
 		LOAD 	COUNTER, 		10  
 		
 		OUTPUT 	DATA_BUFFER, 	COM_Port   
 		RR 		DATA_BUFFER				
 		SUB 	DATA_COUNTER, 	01		
 		RETURN 	NZ
+		
 		LOAD 	STATE, 			07	
 	    
 		RETURN
@@ -271,12 +281,13 @@ W_STOPPBIT:
 		LOAD 	COUNTER, 		10
 		LOAD 	STATE, 			05
 
-		COMPARE WRITE_ADRESS, 	READ_ADRESS
+		COMPARE READ_ADRESS, 	WRITE_ADRESS 	
 		RETURN 	NZ
-		LOAD 	WRITE_ENABLE, 	00
+		
 		LOAD 	DATA_COUNTER, 	08
 		LOAD 	STATE, 			00
 		LOAD 	RECV_DATA_CNT, 	10
+		LOAD 	WRITE_ENABLE, 	00
 		
 		RETURN
 ; --------------------------------------------------------------------------------------------
