@@ -1,0 +1,23 @@
+Table of constant values and their specified constant labels.
+
+00  IO_Port
+01  LED0
+02  LED1
+04  BNT0
+01  COM_Port
+01  TXD
+01  RXD
+30  MIN_NUM
+3A  MAX_NUM
+41  MIN_BA
+5B  MAX_BA
+61  MIN_SA
+7B  MAX_SA
+02  RAM_POINTER
+04  RAM
+FF  RAM_LENGTH
+08  CO_STRT
+08  CO_DONE
+0B  CO_LEN
+09  CO_PTR
+0A  CO_PTR2

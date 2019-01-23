@@ -1,0 +1,14 @@
+Running: D:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/insertcore_isim_beh.exe -prj C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/insertcore_beh.prj work.insertcore 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 2
+Turning on mult-threading, number of parallel sub-compilation jobs: 4 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd" into library work
+ERROR:HDLCompiler:294 - "C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd" Line 42: Cannot update 'in' object ptr
+ERROR:HDLCompiler:1360 - "C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd" Line 42: Cannot assign signal ptr from within a subprogram
+ERROR:HDLCompiler:294 - "C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd" Line 43: Cannot update 'in' object strt
+ERROR:HDLCompiler:1360 - "C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd" Line 43: Cannot assign signal strt from within a subprogram
+ERROR:HDLCompiler:1360 - "C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd" Line 44: Cannot assign signal done from within a subprogram
+ERROR:HDLCompiler:1360 - "C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd" Line 67: Cannot assign signal done from within a subprogram
+ERROR:HDLCompiler:806 - "C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd" Line 92: Syntax error near "END".
+VHDL file C:/Users/user/HSCD/Uebung/Aufgabe3/xwork/A3/../../insertcore.vhd ignored due to errors

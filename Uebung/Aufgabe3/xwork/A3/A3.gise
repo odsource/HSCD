@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="../../A3/A3.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema"/>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1548235258" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1548235258">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1548235258" xil_pn:in_ck="-1682391123929694765" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1548235258">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="../../../FDSx2.vhd"/>
+      <outfile xil_pn:name="../../../kcpsm3.vhd"/>
+      <outfile xil_pn:name="../../../timer.vhd"/>
+      <outfile xil_pn:name="../../insertcore.vhd"/>
+      <outfile xil_pn:name="../../insertsort.vhd"/>
+      <outfile xil_pn:name="../../software/PROGRAMM.VHD"/>
+      <outfile xil_pn:name="../../system.vhd"/>
+      <outfile xil_pn:name="../../testbench/insertcore_tb.vhd"/>
+      <outfile xil_pn:name="../../testbench/insertsort_tb.vhd"/>
+      <outfile xil_pn:name="../../testbench/system_tb.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1548235258" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-4413354671034983603" xil_pn:start_ts="1548235258">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1548235258" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-1309800789089614843" xil_pn:start_ts="1548235258">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1548235258" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="3168996656978831149" xil_pn:start_ts="1548235258">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1548235258" xil_pn:in_ck="-1682391123929694765" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1548235258">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="../../../FDSx2.vhd"/>
+      <outfile xil_pn:name="../../../kcpsm3.vhd"/>
+      <outfile xil_pn:name="../../../timer.vhd"/>
+      <outfile xil_pn:name="../../insertcore.vhd"/>
+      <outfile xil_pn:name="../../insertsort.vhd"/>
+      <outfile xil_pn:name="../../software/PROGRAMM.VHD"/>
+      <outfile xil_pn:name="../../system.vhd"/>
+      <outfile xil_pn:name="../../testbench/insertcore_tb.vhd"/>
+      <outfile xil_pn:name="../../testbench/insertsort_tb.vhd"/>
+      <outfile xil_pn:name="../../testbench/system_tb.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1548235261" xil_pn:in_ck="-1682391123929694765" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6465057060595809282" xil_pn:start_ts="1548235258">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+  </transforms>
+
+</generated_project>
