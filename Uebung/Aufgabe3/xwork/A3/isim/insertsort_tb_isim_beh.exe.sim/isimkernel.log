@@ -1,0 +1,29 @@
+Command line:
+   insertsort_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  1
+     -socket  49169
+
+Wed Jan 23 22:40:32 2019
+
+
+ Elaboration Time: 0.046875 sec
+
+ Current Memory Usage: 674.275 Meg
+
+ Total Signals          : 59
+ Total Nets             : 1209
+ Total Signal Drivers   : 34
+ Total Blocks           : 6
+ Total Primitive Blocks : 4
+ Total Processes        : 12
+ Total Traceable Variables  : 15
+ Total Scalar Nets and Variables : 1592
+Total Line Count : 93
+
+ Total Simulation Time: 0.25 sec
+
+ Current Memory Usage: 674.275 Meg
+
+Wed Jan 23 23:02:34 2019
+

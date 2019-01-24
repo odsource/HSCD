@@ -1,74 +1,75 @@
-
-        CONSTANT IO_Port,		00
-        CONSTANT LED0,     		01
-        CONSTANT LED1,     		02
-        CONSTANT BNT0,     		04
+CONSTANT IO_Port,  00
+        CONSTANT LED0,     01
+        CONSTANT LED1,     02
+        CONSTANT BNT0,     04
         
-        CONSTANT COM_Port, 		01
-        CONSTANT TXD,      		01
-        CONSTANT RXD,      		01
+        CONSTANT COM_Port, 01
+        CONSTANT TXD,      01
+        CONSTANT RXD,      01
 		
-		CONSTANT MIN_NUM,  		30
-		CONSTANT MAX_NUM,  		3A
-		CONSTANT MIN_BA,   		41
-		CONSTANT MAX_BA,   		5B
-		CONSTANT MIN_SA,   		61
-		CONSTANT MAX_SA,   		7B
+		CONSTANT RAM_ADR,  02  ; Adressbits des RAM Bits 7-0
+		CONSTANT RAM_DATA, 04  ; Datenbits 7-0 des RAM 
 		
-		CONSTANT RAM_POINTER,  	02
-		CONSTANT RAM, 			04
-		CONSTANT RAM_LENGTH,	FF
+		; Zusätzliche Schnittstellen für Aufgabe 3:
 		
-		CONSTANT CO_STRT,		08
-		CONSTANT CO_DONE,		08
-		CONSTANT CO_LEN,		0B
-		CONSTANT CO_PTR,		09
-		CONSTANT CO_PTR2,		0A
+		CONSTANT STATUS_REG, 08  ; STRT Bit (Write) & DONE Bit (Read)
+		CONSTANT PTR,  09		 ; PTR Register Bits 7-0
+		CONSTANT PTR2, 0A		 ; PTR Register Bits 10-8
+		CONSTANT LEN,  0B		 ; LEN Register (8Bit) für Länge des Datenblocks
+		
+		; -----------------------------------------
+		
+		CONSTANT BEGINZAHL,		30 ; ASCII Zeichen 0
+		CONSTANT ENDZAHL,		3A ; ASCII Zeichen 9 + 1
+		CONSTANT BEGINGROSS,	41 ; ASCII Zeichen A
+		CONSTANT ENDGROSS,		5B ; ASCII Zeichen Z + 1
+		CONSTANT BEGINKLEIN,	61 ; ASCII Zeichen a
+		CONSTANT ENDKLEIN,  	7B ; ASCII Zeichen z + 1
+		
+		CONSTANT ZERO,	   00
+		CONSTANT ONE,	   01
+		CONSTANT SEVEN,    07
+		CONSTANT EIGHT,    08
+		CONSTANT SIXTEEN,  10
 
 ; Register Mapping
-; alle acht Register s0 bis sF stehen der ISR zur Verfuegung
+; alle acht Register s0 bis s7 stehen der ISR zur Verfuegung
         NAMEREG s0, IOR
         NAMEREG s1, TMP
         NAMEREG s2, CNTH
         NAMEREG s3, CNTL
 		
-		NAMEREG s4, COUNTER
-		NAMEREG s5, STATE
+		NAMEREG s4, COUNTER		; Counter für Comm_in und Comm_out
+		NAMEREG s5, DATA		; Datenregister für Comm_in und Comm_out
+		NAMEREG s6, WRITE		; Semaphor für Read/Write aus RAM
+		NAMEREG s7, DATA_COUNT  ; Zählt wv Bits eingelesen wurden in Datenregister
+		NAMEREG s8, STATE       ; Zustandsmaschine
 		
-		NAMEREG s6, DATA_BUFFER
-		NAMEREG s7, WRITE_ENABLE
-		NAMEREG s8, DATA_COUNTER
-		NAMEREG s9, RECV_DATA_CNT
-		
-		NAMEREG sA, WRITE_ADRESS			
-		NAMEREG sB, READ_ADRESS           
-		NAMEREG sC, START
-		NAMEREG SD, STOP
-		
-		NAMEREG SE,	SET_STRT
-		NAMEREG SF,	DONE
+		NAMEREG s9, DATABLOCK_COUNTER  ; Größe des Datenblocks
+		NAMEREG sA, ADR_W			; Adresspointer zum Schreiben auf RAM-Block
+		NAMEREG sB, ADR_R           ; Adresspointer zum Lesen von RAM-Block
+		NAMEREG sC, Startbit
+		NAMEREG sD, Stopbit
+
+; alle acht Register s8 bis sF stehen der Main-Funktion zur Verfuegung
 
 ; --------------------------------------------------------------------------------------------
 
         ADDRESS 000
 ; Hauptfunktion
-start:  AND    	CNTH, 			00   	; Initialisierung des Zaehlers ...
-        AND    	CNTL, 			00   	; in der ISR
+start:  AND    CNTH, 00   ; Initialisierung der Zaehlers ...
+        AND    CNTL, 00   ; in der ISR
+			
+		LOAD   STATE, 11
+		LOAD   WRITE, 00  ; Schreiberlaubnis
+		LOAD   ADR_W, 00  ; Zeiger auf RAM-Block Adresse (00)00
+		LOAD   ADR_R, 00  ; Zeiger auf RAM-Block Adresse (00)00
+		LOAD   Startbit, 00
+		LOAD   Stopbit, 01
 		
-		LOAD	STATE,  		00
-		LOAD	DATA_COUNTER, 	08
-		LOAD	WRITE_ENABLE, 	00
+		LOAD   DATABLOCK_COUNTER, FF  ; feste Größe 255
 		
-		LOAD   	WRITE_ADRESS, 	00 
-		LOAD   	READ_ADRESS, 	00 
-		LOAD   	START, 			00
-		LOAD   	STOP, 			01
-		LOAD 	RECV_DATA_CNT, 	10
-		LOAD	SET_STRT,		01
-		LOAD	DONE,			00
-		
-		OUTPUT	START,			CO_PTR2
-		
+		OUTPUT ADR_W, PTR2  ; Bits 10-8 des PTR mit 00 initialisieren und unberührt lassen
 		
         ENABLE INTERRUPT
 loop:   ; do nothing
@@ -102,238 +103,192 @@ BLINK0: RETURN
 ; --------------------------------------------------------------------------------------------
 
 ; Subroutine, die Daten ueber das serielle Eingangssignal RXD abtastet,
-; zu einem Byte zusammensetzt, entscheidet, ob das empfangene Byte
+; zu einem Byte zusammensetzt, entschidet, ob das empfangene Byte
 ; ein Buchstabe oder eine Ziffer ist, und ggf. das Byte seriell
 ; ueber das serielle Ausgangssignal TXD ausgibt
-;
-; in dieser Version ist eine einfache Echo-Funktion implementiert
-COMM_IN:   
-		COMPARE STATE,			10
-		JUMP	Z,				WAIT_ON_DONE
-		
-		COMPARE WRITE_ENABLE, 	00
-		JUMP 	NZ, 			COMM_OUT
 
-		COMPARE STATE, 			02
-		JUMP 	Z, 				RECDATA
-		
-		COMPARE STATE, 			00
-		JUMP	Z,				FALLINGFLANK
+; ------------------- Zustandsautomat zum Festlegen des Lesezustandes ------------------------
 
-		COMPARE	STATE,			01
-		JUMP   	Z, 				STARTBIT
+COMM_IN:
+		; Die Zustände sind zirkulär angeordnet und im Regelfall über eine 1-Bit Rotation erreichbar
+		COMPARE WRITE, 00
+		JUMP NZ, COMM_OUT				; Lesen nicht erlaubt wenn WRITE = 1, daher Sprung zum Schreiben
+		COMPARE STATE, 44
+		JUMP Z, DATENUEBERNAHME			; Abspeichern der Datenbits und Übergang auf 88
+		COMPARE STATE, 88
+		JUMP Z, CHECK_STOP_BIT			; Erkennen des Stopbits und Übergang auf 11
+		COMPARE STATE, 22
+		JUMP Z, STARTBITVALIDIERUNG		; Wenn das Startbit 8 Takte vorliegt geht man in Zustand 44 über
 
-		COMPARE STATE, 			03
-		JUMP 	Z, 				STOPPBIT
+; ----------------------- Zustand ELSE : Flankenerkennung -----------------------------
 
-		; idle, fallende flanke, start bit erkannt wenn nicht abbrechen, daten, stoppbit 
-		; mod 16 für daten
-		; mod 8 für immer
-
-; --------------------------------------------------------------------------------------------
-
-; Subroutine, die überprüft ob die fallende Flanke nur eine Leitungsstörung
-; war, oder ob es sich wirklich um das Startbit handelt.
-; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
-FALLINGFLANK:
-		INPUT  	IOR,  		COM_Port ; COM_Port einlesen
-		COMPARE IOR, 		00
-		RETURN	NZ
-		
-		LOAD	STATE,		01
-		LOAD	COUNTER, 	07
-		
+; Sobald im Zustand 11 eine Abwärtsflanke erkannt wird liegt das Startbit vor
+FLANK_DETECTION:
+		INPUT IOR, COM_Port ; COM_Port einlesen
+		COMPARE IOR, 01     ; Falls IOR 1 ist, also kein Startbit
+		RETURN Z            ; Beende Einlesen
+		; Ansonsten muss IOR bereits 0 sein -> nur noch 7 Takte abzählen
+		LOAD COUNTER, SEVEN
+		LOAD STATE, 22          ; Rotiere nach links von 11 nach 22
 		RETURN
 
-; --------------------------------------------------------------------------------------------
+; --------------------- Zustand 22 : Startbitvalidierung ----------------------------
+		
+; Hier werden nach Erkennung des Starbits 7 Takte abgezählt (insgesamt 8 mit Erkennung)
+STARTBITVALIDIERUNG:
+		SUB COUNTER, 01 	; Dekrementieren von sieben bis null
+		RETURN NZ       	; Beenden sobald keine 8 Takte erreicht wurden
+		INPUT IOR, COM_Port ; Nun muss Bit eingelesen und nochmals auf 0 geprüft werden (Rauschprävention)
+		COMPARE IOR, 01     ; IOR darf hier nicht 1 sein, sonst liegt ein Fehler vor -> Reset
+		JUMP Z, RAUSCHEN
+		LOAD DATA, 00
+		LOAD COUNTER, SIXTEEN ; Setze Counter zurück, sodass wir diesen später auf 16 zählen können
+		LOAD DATA_COUNT, EIGHT ; Counter um 8 Bits zu zählen bis Zeichen vollständig eingelesen ist
+		LOAD STATE, 44	  ; Zustandsübergang von 22 auf 44
+		RETURN ; Startbit muss nicht in Datenregister zurückgeschrieben werden, da es sowieso eine 0 ist
+		
+; Falls ein Rauschen vorliegt auf Zustand 11 zurückgesetzt werden:
+RAUSCHEN:
+		LOAD STATE, 11         ; Von 22 auf 11 zurück
+		RETURN
+		
+; --------------------- Zustand 44 : Datenbits einlesen -----------------------------
+		
+; Nach Ablauf von 16 Takten Bit einlesen und abspeichern
+DATENUEBERNAHME:
+		SUB COUNTER, 01 	; Dekrementieren von sechzehn bis null
+		RETURN NZ
+		INPUT IOR, COM_Port ; Zunächst muss das Bit eingelesen werden
+		
+		OR DATA, IOR 		; Bit eintragen in Datenspeicher
+		RR DATA				; Platz schaffen für nächstes Bit
+		LOAD COUNTER, SIXTEEN ; Counter wieder zurücksetzen für nächstes Bit
+		
+		; Wenn 8 Bits erreicht wurden, Übergang nach Zustand 88
+		SUB DATA_COUNT, 01  ; Dekrementieren von acht bis null
+		RETURN NZ
+		
+; enter stopbit detection
+		LOAD STATE, 88      ; Zustandsübergang von 44 auf 88
+		RETURN
+		
+; --------------------- Zustand 88 : Stopbit erkennen -----------------------------
 
-; Subroutine, die überprüft ob die fallende Flanke nur eine Leitungsstörung
-; war, oder ob es sich wirklich um das Startbit handelt.
-; Modulo 8 Zähler um in der Mitte der Übertragung nochmal zu überprüfen (16-fache Abtastung).
-STARTBIT:
-		SUB		COUNTER,		01
-		RETURN 	NZ
+CHECK_STOP_BIT:
+		SUB COUNTER, 01 	; Counter wieder 16 Takte runterzählen
+		RETURN NZ
+		INPUT IOR, COM_Port ; Bit einlesen
+		COMPARE IOR, 01		; Schauen ob Stopbit vorliegt
+		JUMP NZ, RAUSCHEN  ; Stopbit liegt vor, Überprüfung des ASCII Zeichens
 		
-		LOAD	COUNTER,		RAM_LENGTH
+		COMPARE DATA, ENDKLEIN		   ; ob größer z
+		JUMP NC, READ_RESET			   
+		COMPARE DATA, BEGINZAHL		   ; Schauen ob wir kleiner als 0 sind
+		JUMP C, READ_RESET
+		COMPARE DATA, BEGINKLEIN       ; Schauen ob Kleinbuchstabe vorliegt
+		JUMP NC, WRITE_TO_RAM
+		COMPARE DATA, ENDGROSS         ; Schauen ob zwischen Z und a
+		JUMP NC, READ_RESET
+		COMPARE DATA, BEGINGROSS       ; Schauen ob Großbuchstabe vorliegt
+		JUMP NC, WRITE_TO_RAM
+		COMPARE DATA, ENDZAHL          ; Schauen ob Zahl oder Sonderzeichen
+		JUMP C, WRITE_TO_RAM           ; Zahl liegt vor
+		JUMP READ_RESET				   ; Sonderzeichen zwischen 9 und A liegt vor
+
+; Zeichen ist valide, kann also auf RAM geschrieben werden
+WRITE_TO_RAM:
+		OUTPUT ADR_R, RAM_ADR
+		ADD ADR_R, ONE
+		OUTPUT DATA, RAM_DATA ; Schreibe Zeichen in Datenregister an Adresse von ADR
+
+; Zeichen ist komplett eingelesen, Zustände zurücksetzen
+READ_RESET:
+		LOAD STATE, 11
+		SUB DATABLOCK_COUNTER, 01 ; Anzahl der noch zu lesenden ASCII-Zeichen reduzieren
+		RETURN NZ
+		LOAD WRITE, ONE
+		LOAD COUNTER, SIXTEEN
+		OUTPUT ADR_W, PTR 			; Startadresse setzen
+		OUTPUT ADR_R, LEN          ; Länge des Blocks mitgeben
+		OUTPUT Stopbit, STATUS_REG  ; Co-Prozessor starten
+		RETURN
+
+; ------------------- Zustandsautomat zum Festlegen des Lesezustandes ------------------------
+
+COMM_OUT:
+		; zyklisches Abprüfen der DONE Variable, STRT wird hierbei stets auf 00 gesetzt
+		INPUT IOR, STATUS_REG	; Schauen ob Co-Prozessor DONE ist
+		COMPARE IOR, ZERO
+		OUTPUT Startbit, STATUS_REG  ; STARTBIT entspricht 00, setze somit Co-Prozessor STRT auf 0
+		; -------------------------------------
+		RETURN Z
+		COMPARE STATE, 22
+		JUMP Z, WRITE_DATABIT			; Schreiben des Datenbits
+		COMPARE STATE, 44
+		JUMP Z, WRITE_STOPBIT			; Stopbit schreiben und Schreibprozess beenden
+
+; --------------------------- Zustand ELSE : Startbit schreiben --------------------------------
+WRITE_STARTBIT:
+		SUB COUNTER, ONE
+		RETURN NZ
+
+		OUTPUT Startbit, COM_Port
+		LOAD COUNTER, SIXTEEN
+		LOAD DATA_COUNT, EIGHT
+		; ---- Byte aus RAM Lesen ----------
+		OUTPUT ADR_W, RAM_ADR
+		ADD ADR_W, 01
+		INPUT DATA, RAM_DATA
+		; ----------------------------------
+		LOAD STATE, 22
+		RETURN
+
+; --------------------------- Zustand 22 : Datenbit schreiben ---------------------------------
+        
+WRITE_DATABIT:
+		SUB COUNTER, 01			; Dekrementieren von sechzehn auf null
+		RETURN NZ
+		LOAD COUNTER, SIXTEEN   ; Wieder auf sechzehn setzen
 		
-		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
-		COMPARE IOR, 			00
-		RETURN 	NZ
+		OUTPUT DATA, COM_Port   ; LSB auf COM_Port schreiben
+		SR0 DATA				; LSB flushen
+		SUB DATA_COUNT, 01		; Falls DATA_COUNT 0 ist wurden 8 bits geschrieben
+		RETURN NZ
+		; Ansonsten muss als nächstes Stopbit gesetzt werden
+		LOAD STATE, 44		    ; Übergang von 22 auf 44
+		RETURN
 		
-		LOAD 	STATE, 			02
-		LOAD	DATA_BUFFER,	00
+; --------------------------- Zustand 44 : Stopbit schreiben --------------------------------
+
+WRITE_STOPBIT:
+		SUB COUNTER, 01
+		RETURN NZ
 		
+		OUTPUT Stopbit, COM_Port	; Stopbit schreiben
+		
+		LOAD COUNTER, SIXTEEN
+		LOAD STATE, 11
+
+; Semaphor wieder auf 0, falls Datenblock aus RAM gelesen wurde
+		COMPARE ADR_W, ADR_R
+		RETURN NZ
+		LOAD WRITE, ZERO
+		LOAD DATABLOCK_COUNTER, FF
+		LOAD ADR_W, ZERO
+		LOAD ADR_R, ZERO
 		RETURN
 		
 ; --------------------------------------------------------------------------------------------
-
-; Subroutine, die 
-RECDATA:
-		SUB		COUNTER, 		01
-		RETURN	NZ
 		
-		LOAD	COUNTER,		RAM_LENGTH
-		
-		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
-		OR		DATA_BUFFER, 	IOR
-		RR		DATA_BUFFER
-		
-		SUB		DATA_COUNTER,	01
-		RETURN 	NZ
-		
-		LOAD	DATA_COUNTER,	08
-		
-		LOAD	STATE, 			03
-		
-		RETURN
-		
-; --------------------------------------------------------------------------------------------
-
-; Subroutine, 
-STOPPBIT:
-		SUB		COUNTER, 		01
-		RETURN	NZ
-		
-		LOAD 	STATE,			00
-		INPUT  	IOR,  			COM_Port ; COM_Port einlesen
-		COMPARE IOR, 			01
-		RETURN  NZ
-		
-		COMPARE	DATA_BUFFER,	MIN_NUM	; Hex 30
-		JUMP	C,				RESET 
-		
-		COMPARE DATA_BUFFER,	MAX_NUM	; Hex 3A
-		JUMP	C,				WRITE	
-
-		COMPARE DATA_BUFFER,	MAX_SA	; Hex 7B
-		JUMP	NC,				RESET			
-		
-		COMPARE DATA_BUFFER,	MIN_SA	; Hex 61
-		JUMP	NC,				WRITE
-		
-		COMPARE DATA_BUFFER,	MAX_BA	; Hex 5B
-		JUMP	NC,				RESET
-		
-		COMPARE DATA_BUFFER,	MIN_BA	; Hex 41
-		JUMP	NC,				WRITE
-		
-; --------------------------------------------------------------------------------------------
-
-; Subroutine, die 
-WRITE:
-		OUTPUT 	READ_ADRESS, 	RAM_POINTER
-		ADD 	READ_ADRESS, 	01
-		OUTPUT 	DATA_BUFFER, 	RAM 
-		
-; --------------------------------------------------------------------------------------------
-
-RESET:		
-		SUB 	RECV_DATA_CNT, 	01 
-		RETURN 	NZ
-		
-		OUTPUT	READ_ADRESS,	CO_LEN
-		OUTPUT	START,			CO_PTR
-		OUTPUT	SET_STRT,		CO_STRT
-		LOAD	STATE,			10
-		OUTPUT	DONE,			CO_STRT
-		
-		RETURN
-	
-; --------------------------------------------------------------------------------------------
-
-WAIT_ON_DONE:
-
-		OUTPUT	DONE,	CO_STRT
-		INPUT	DONE,	CO_DONE
-		COMPARE DONE,	01
-		RETURN	NZ
-		
-		LOAD 	WRITE_ENABLE, 	01
-		LOAD 	STATE,			05
-		LOAD 	COUNTER, 		10
-		
-		RETURN
-
-; --------------------------------------------------------------------------------------------
-		
-; Subroutine, die
-COMM_OUT:						
-		COMPARE	STATE,		06
-		JUMP	Z,			W_DATA
-		
-		COMPARE STATE,		05
-		JUMP	Z,			W_STARTBIT
-		
-		COMPARE	STATE,		07
-		JUMP	Z,			W_STOPPBIT
-		
-		RETURN
-		
-; --------------------------------------------------------------------------------------------
-
-; Subroutine, die
-W_STARTBIT:
-		SUB 	COUNTER, 		01
-		RETURN 	NZ
-
-		OUTPUT 	START, 			COM_Port
-		LOAD 	COUNTER, 		RAM_LENGTH
-		LOAD 	DATA_COUNTER, 	08
-		OUTPUT 	WRITE_ADRESS, 	RAM_POINTER
-		ADD 	WRITE_ADRESS, 	01
-		INPUT 	DATA_BUFFER, 	RAM
-		LOAD 	STATE, 			06
-		
-		RETURN
-; --------------------------------------------------------------------------------------------
-
-; Subroutine, die
-W_DATA:
-		SUB 	COUNTER, 		01			
-		RETURN 	NZ
-		
-		LOAD 	COUNTER, 		RAM_LENGTH  
-		
-		OUTPUT 	DATA_BUFFER, 	COM_Port   
-		RR 		DATA_BUFFER				
-		SUB 	DATA_COUNTER, 	01		
-		RETURN 	NZ
-		
-		LOAD 	STATE, 			07	
-	    
-		RETURN
-				
-; --------------------------------------------------------------------------------------------
-
-; Subroutine, die
-W_STOPPBIT:
-		SUB 	COUNTER, 		01
-		RETURN 	NZ
-		
-		OUTPUT 	STOP, 			COM_Port
-		
-		LOAD 	COUNTER, 		10
-		LOAD 	STATE, 			05
-
-		COMPARE READ_ADRESS, 	WRITE_ADRESS 	
-		RETURN 	NZ
-		
-		LOAD 	DATA_COUNTER, 	08
-		LOAD 	STATE, 			00
-		LOAD 	RECV_DATA_CNT, 	10
-		LOAD 	WRITE_ENABLE, 	00
-		
-		RETURN
-; --------------------------------------------------------------------------------------------
         ADDRESS 300
 ; Interrupt-Service-Routine
-ISR:	CALL    BNT0LED0
+ISR:    CALL    BNT0LED0
         CALL    BLINK
-		CALL    COMM_IN
+        CALL    COMM_IN
         RETURNI ENABLE
 
 ; --------------------------------------------------------------------------------------------
 
 ; Interrupt-Vektor
         ADDRESS 3FF
-        JUMP ISR
+JUMP ISR

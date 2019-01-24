@@ -1,0 +1,2 @@
+vhdl work "../../insertcore.vhd"
+vhdl work "../../testbench/insertcore_tb.vhd"
